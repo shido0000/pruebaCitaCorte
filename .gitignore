@@ -1,16 +1,39 @@
 ```
-# Build artifacts
-bin/
-obj/
-*.dll
-*.exe
-*.pdb
-*.config
-*.csproj.user
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
 
-# Dependencies
+# Visual Studio Code
+.vscode/
+
+# Visual Studio
+*.user
+*.userosscache
+*.suo
+*.csproj.user
+*.vbproj.user
+*.fsproj.user
+*.userprefs
+
+# ASP.NET
+[._]*.sln.ide.*
+*.VC.db
+*.VC.VC.opendb
+
+# CoreCLR native images
+*.nlp
+
+# Package manager caches
 packages/
-node_modules/
+[._]package/
 
 # Logs
 *.log
@@ -20,12 +43,41 @@ node_modules/
 .env.local
 *.env.*
 
-# Editors
-.vscode/
-.idea/
-*.userprefs
-
 # OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+desktop.ini
+
+# Testing
+TestResults/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Compiled files
+*.dll
+*.exe
+*.pdb
+*.so
+*.dylib
+*.class
+*.o
+*.obj
+*.a
+*.lib
+
+# Coverage reports
+coverage/
+*.coverage
+.coverage
+
+# Local configuration
+appsettings.Local.json
 ```

@@ -220,6 +220,8 @@ namespace API.Application.IoC
             services.AddScoped<IAfiliacionBarberoService, AfiliacionBarberoService>();
             services.AddScoped<IServicioService, ServicioService>();
             services.AddScoped<IPerfilBarberiaService, PerfilBarberiaService>();
+            services.AddScoped<IProductoService, ProductoService>();
+            services.AddScoped<IEstadisticaService, EstadisticaService>();
 
             services.AddScoped(typeof(IBaseService<EntidadBase, AbstractValidator<EntidadBase>>), typeof(BasicService<EntidadBase, AbstractValidator<EntidadBase>>));
 
