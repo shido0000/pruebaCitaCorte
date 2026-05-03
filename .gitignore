@@ -11,7 +11,6 @@ obj/
 # Dependencies
 packages/
 node_modules/
-bower_components/
 
 # Logs
 *.log
@@ -19,24 +18,17 @@ bower_components/
 # Environment
 .env
 .env.local
-.env.*
+*.env.*
 
 # Editors
 .vscode/
 .idea/
-*.swp
-*.swo
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
 # OS generated files
 .DS_Store
 Thumbs.db
-
-# Test coverage
-coverage/
-htmlcov/
-*.coverage
-
-# Temporary files
-*.tmp
-*.temp
 ```
