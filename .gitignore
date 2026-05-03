@@ -4,11 +4,15 @@
 __pycache__/
 *.o
 *.obj
+*.exe
 *.dll
 *.so
-*.exe
-*.class
+*.a
 *.out
+obj/
+bin/
+lib/
+target/
 
 # Dependencies
 node_modules/
@@ -16,14 +20,7 @@ venv/
 .venv/
 .env
 .env.local
-*.env.*
-
-# Build directories
-dist/
-build/
-target/
-bin/
-obj/
+.env.*
 
 # Logs and temp files
 *.log
@@ -34,14 +31,13 @@ obj/
 # Editors
 .vscode/
 .idea/
-*.swp
-*.swo
+*.userprefs
 
-# System files
+# OS generated files
 .DS_Store
 Thumbs.db
 
-# Coverage
+# Coverage reports
 coverage/
 htmlcov/
 .coverage
@@ -70,11 +66,10 @@ wheels/
 # Dotnet specific
 **/bin/
 **/obj/
-**/Debug/
-**/Release/
+**/out/
 *.user
+*.sln.cache
 *.userosscache
-*.suo
-*.userprefs
-**/.DS_Store
+*.lock.json
+
 ```
