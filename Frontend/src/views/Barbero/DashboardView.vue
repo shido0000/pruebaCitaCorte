@@ -130,6 +130,7 @@ import { ref, reactive, onMounted } from 'vue'
 import { useAuthStore } from '../../stores/authStore'
 import { useNotificacionStore } from '../../stores/notificacionStore'
 import reservaService from '../../services/reservaService'
+import dashboardBarberoService from '../../services/dashboardBarberoService'
 
 const authStore = useAuthStore()
 const notificacionStore = useNotificacionStore()
@@ -153,18 +154,26 @@ onMounted(async () => {
 
 async function cargarEstadisticas() {
   try {
-    // En una implementación real, esto vendría de un endpoint de estadísticas
-    const response = await reservaService.obtenerReservas({ estado: 'Pendiente' })
-    stats.reservasPendientes = response.length || 0
+    const dashboardData = await dashboardBarberoService.obtenerDashboard()
     
-    const responseConfirmadas = await reservaService.obtenerReservas({ estado: 'Confirmada' })
-    stats.reservasConfirmadas = responseConfirmadas.length || 0
-    
-    // Simulación de datos - en producción vendría del backend
-    stats.clientesTotales = Math.floor(Math.random() * 50) + 10
-    stats.ingresosMes = Math.floor(Math.random() * 1000) + 500
+    if (dashboardData) {
+      stats.reservasPendientes = dashboardData.reservasPendientes || 0
+      stats.reservasConfirmadas = dashboardData.reservasConfirmadas || 0
+      stats.clientesTotales = dashboardData.clientesAtendidos || 0
+      stats.ingresosMes = dashboardData.ingresosMes || 0
+    }
   } catch (error) {
     console.error('Error al cargar estadísticas:', error)
+    // Fallback: intentar obtener datos básicos de reservas
+    try {
+      const response = await reservaService.obtenerReservas({ estado: 'Pendiente' })
+      stats.reservasPendientes = response.items?.length || response.length || 0
+      
+      const responseConfirmadas = await reservaService.obtenerReservas({ estado: 'Confirmada' })
+      stats.reservasConfirmadas = responseConfirmadas.items?.length || responseConfirmadas.length || 0
+    } catch (fallbackError) {
+      console.error('Error en fallback de estadísticas:', fallbackError)
+    }
   }
 }
 
@@ -176,7 +185,7 @@ async function cargarReservas() {
       ordenarPor: 'fecha',
       ascendente: true
     })
-    reservas.value = response.items || response || []
+    reservas.value = response.items || response.data || response || []
   } catch (error) {
     console.error('Error al cargar reservas:', error)
   } finally {
@@ -186,8 +195,8 @@ async function cargarReservas() {
 
 async function cargarNotificaciones() {
   try {
-    await notificacionStore.obtenerNotificaciones()
-    notificaciones.value = notificacionStore.notificaciones.slice(0, 5)
+    await notificacionStore.cargarNotificaciones(1, 5)
+    notificaciones.value = notificacionStore.notificaciones
   } catch (error) {
     console.error('Error al cargar notificaciones:', error)
   }
