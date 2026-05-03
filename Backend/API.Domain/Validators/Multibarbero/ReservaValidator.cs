@@ -1,5 +1,6 @@
 using API.Data.Entidades.Multibarbero;
 using API.Data.IUnitOfWorks.Interfaces;
+using API.Application.Contracts.Multibarbero;
 using FluentValidation;
 
 namespace API.Domain.Validators.Multibarbero
@@ -7,10 +8,14 @@ namespace API.Domain.Validators.Multibarbero
     public class ReservaValidator : AbstractValidator<Reserva>
     {
         private readonly IUnitOfWork<Reserva> _repositorios;
+        private readonly IReservaValidacionService _validacionService;
 
-        public ReservaValidator(IUnitOfWork<Reserva> repositorios)
+        public ReservaValidator(
+            IUnitOfWork<Reserva> repositorios,
+            IReservaValidacionService validacionService)
         {
             _repositorios = repositorios;
+            _validacionService = validacionService;
 
             RuleFor(r => r.ClienteId)
                 .NotEmpty().WithMessage("El cliente es obligatorio.");
@@ -34,6 +39,29 @@ namespace API.Domain.Validators.Multibarbero
 
             RuleFor(r => r.TipoProveedor)
                 .IsInEnum().WithMessage("El tipo de proveedor no es válido.");
+
+            // Validación personalizada de solapamiento
+            RuleFor(r => r)
+                .MustAsync(ValidarSolapamientoAsync).WithMessage("Ya existe una reserva en ese horario para el mismo proveedor.");
+        }
+
+        private async Task<bool> ValidarSolapamientoAsync(Reserva reserva, CancellationToken cancellationToken)
+        {
+            // Solo validar solapamiento al crear nuevas reservas (cuando Id es Guid.Empty o default)
+            if (reserva.Id == Guid.Empty)
+            {
+                return !await _validacionService.ExisteSolapamientoAsync(
+                    reserva.ProveedorId, 
+                    reserva.FechaHoraInicio, 
+                    reserva.FechaHoraFin);
+            }
+            
+            // Para actualizaciones, excluir la propia reserva de la validación
+            return !await _validacionService.ExisteSolapamientoAsync(
+                reserva.ProveedorId, 
+                reserva.FechaHoraInicio, 
+                reserva.FechaHoraFin, 
+                reserva.Id);
         }
     }
 }

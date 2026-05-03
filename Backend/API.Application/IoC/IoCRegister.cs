@@ -222,6 +222,11 @@ namespace API.Application.IoC
             services.AddScoped<IPerfilBarberiaService, PerfilBarberiaService>();
             services.AddScoped<IProductoService, ProductoService>();
             services.AddScoped<IEstadisticaService, EstadisticaService>();
+            
+            // Servicios de Validación y Gestión Multibarbero
+            services.AddScoped<IReservaValidacionService, ReservaValidacionService>();
+            services.AddScoped<ISuscripcionService, SuscripcionService>();
+            services.AddScoped<IAfiliacionService, AfiliacionService>();
 
             services.AddScoped(typeof(IBaseService<EntidadBase, AbstractValidator<EntidadBase>>), typeof(BasicService<EntidadBase, AbstractValidator<EntidadBase>>));
 

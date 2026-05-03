@@ -1,5 +1,6 @@
+using API.Application.Contracts.Multibarbero;
 using API.Data.Entidades.Multibarbero;
-using API.Data.Enum.Multibarbero;
+using API.Data.IUnitOfWorks.Interfaces.Multibarbero;
 using Microsoft.Extensions.Logging;
 
 namespace API.Application.Services.Multibarbero
@@ -9,10 +10,14 @@ namespace API.Application.Services.Multibarbero
     /// </summary>
     public class ReservaValidacionService : IReservaValidacionService
     {
+        private readonly IReservaRepository _reservaRepository;
         private readonly ILogger<ReservaValidacionService> _logger;
 
-        public ReservaValidacionService(ILogger<ReservaValidacionService> logger)
+        public ReservaValidacionService(
+            IReservaRepository reservaRepository,
+            ILogger<ReservaValidacionService> logger)
         {
+            _reservaRepository = reservaRepository;
             _logger = logger;
         }
 
@@ -20,22 +25,32 @@ namespace API.Application.Services.Multibarbero
         /// Verifica si existe solapamiento de horarios para un proveedor
         /// Regla: No debe existir solapamiento en fechas para el mismo proveedor
         /// </summary>
-        public Task<bool> ExisteSolapamientoAsync(Guid proveedorId, DateTime fechaInicio, DateTime fechaFin, Guid? reservaExcluirId = null)
+        public async Task<bool> ExisteSolapamientoAsync(Guid proveedorId, DateTime fechaInicio, DateTime fechaFin, Guid? reservaExcluirId = null)
         {
-            // Esta implementación valida la lógica de solapamiento
-            // La implementación real consultaría la base de datos
-            
-            // Lógica de solapamiento:
-            // Dos rangos [A, B] y [C, D] se solapan si: !(B <= C || A >= D)
-            // Equivalentemente: A < D && B > C
-            
             _logger.LogInformation("Validando solapamiento para proveedor {ProveedorId} desde {Inicio} hasta {Fin}", 
                 proveedorId, fechaInicio, fechaFin);
 
-            // En producción, esto consultaría la BD
-            // return await _reservaRepository.ExisteSolapamientoAsync(proveedorId, fechaInicio, fechaFin, reservaExcluirId);
+            // Obtener todas las reservas activas del proveedor en el rango de fechas
+            var reservas = await _reservaRepository.ObtenerTodosAsync();
             
-            return Task.FromResult(false); // Placeholder - implementar con repository
+            // Filtrar reservas del mismo proveedor que estén activas y no sean la que se está excluyendo
+            var reservasConflicto = reservas.Where(r => 
+                r.ProveedorId == proveedorId &&
+                r.Estado != EstadoReserva.Cancelada &&
+                r.Estado != EstadoReserva.Finalizada &&
+                (reservaExcluirId == null || r.Id != reservaExcluirId) &&
+                HaySolapamiento(fechaInicio, fechaFin, r.FechaInicio, r.FechaFin)
+            ).ToList();
+
+            if (reservasConflicto.Any())
+            {
+                _logger.LogWarning("Se encontraron {Count} reservas con solapamiento para el proveedor {ProveedorId}", 
+                    reservasConflicto.Count, proveedorId);
+                return true;
+            }
+
+            _logger.LogInformation("No hay solapamiento para el proveedor {ProveedorId}", proveedorId);
+            return false;
         }
 
         /// <summary>
@@ -69,18 +84,48 @@ namespace API.Application.Services.Multibarbero
         /// <summary>
         /// Obtiene los horarios disponibles para un proveedor en una fecha específica
         /// </summary>
-        public Task<List<DateTime>> ObtenerHorariosDisponiblesAsync(Guid proveedorId, DateTime fecha, int duracionServicio)
+        public async Task<List<DateTime>> ObtenerHorariosDisponiblesAsync(Guid proveedorId, DateTime fecha, int duracionServicio)
         {
-            // Esta implementación devolvería los horarios disponibles
-            // Considerando:
-            // 1. Horario laboral del proveedor
-            // 2. Reservas existentes
-            // 3. Tiempo de preparación entre servicios
-            
+            _logger.LogInformation("Obteniendo horarios disponibles para proveedor {ProveedorId} en fecha {Fecha}", 
+                proveedorId, fecha.Date);
+
+            // Obtener todas las reservas del proveedor para esa fecha
+            var reservas = await _reservaRepository.ObtenerTodosAsync();
+            var reservasDelDia = reservas.Where(r => 
+                r.ProveedorId == proveedorId &&
+                r.FechaInicio.Date == fecha.Date &&
+                r.Estado != EstadoReserva.Cancelada &&
+                r.Estado != EstadoReserva.Finalizada
+            ).ToList();
+
+            // Definir horario laboral (ej: 9:00 AM a 7:00 PM)
+            var horaInicioJornada = fecha.Date.AddHours(9); // 9:00 AM
+            var horaFinJornada = fecha.Date.AddHours(19);   // 7:00 PM
+
             var horariosDisponibles = new List<DateTime>();
-            
-            // Placeholder - implementar con repository y lógica de horarios
-            return Task.FromResult(horariosDisponibles);
+            var tiempoActual = horaInicioJornada;
+
+            // Generar slots de tiempo disponibles
+            while (tiempoActual.AddMinutes(duracionServicio) <= horaFinJornada)
+            {
+                var finSlot = tiempoActual.AddMinutes(duracionServicio);
+                
+                // Verificar si este slot se solapa con alguna reserva existente
+                bool hayConflicto = reservasDelDia.Any(r => 
+                    HaySolapamiento(tiempoActual, finSlot, r.FechaInicio, r.FechaFin)
+                );
+
+                if (!hayConflicto)
+                {
+                    horariosDisponibles.Add(tiempoActual);
+                }
+
+                // Avanzar al siguiente slot (incrementos de 15 minutos)
+                tiempoActual = tiempoActual.AddMinutes(15);
+            }
+
+            _logger.LogInformation("Se encontraron {Count} horarios disponibles", horariosDisponibles.Count);
+            return horariosDisponibles;
         }
 
         /// <summary>
