@@ -23,6 +23,23 @@ namespace API.Data.Entidades.Multibarbero
         public string? Ubicacion { get; set; }
         public decimal CalificacionPromedio { get; set; }
         public int TotalReseñas { get; set; }
+        
+        // Campos de Suscripción (FALTANTES - AGREGADOS)
+        public Guid? PlanSuscripcionId { get; set; }
+        [ForeignKey(nameof(PlanSuscripcionId))]
+        public PlanSuscripcion? PlanSuscripcion { get; set; }
+        
+        public DateTime? FechaInicioPlan { get; set; }
+        public DateTime? FechaVencimientoPlan { get; set; }
+        
+        public EstadoSuscripcion? EstadoSolicitudCambioPlan { get; set; }
+        public Guid? NuevoPlanSolicitadoId { get; set; }
+        [ForeignKey(nameof(NuevoPlanSolicitadoId))]
+        public PlanSuscripcion? NuevoPlanSolicitado { get; set; }
+        
+        // Estadísticas del barbero
+        public int TotalServicios { get; set; }
+        public int TotalClientes { get; set; }
 
         // Navegación a barbería si aplica
         public Guid? PerfilBarberiaId { get; set; }
