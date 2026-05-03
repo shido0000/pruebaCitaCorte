@@ -157,17 +157,21 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
-import servicioService from '../../services/servicioService'
+import { ref, reactive, onMounted, computed } from 'vue'
+import { useServicioStore } from '../../stores/servicioStore'
+import { useAuthStore } from '../../stores/authStore'
 
-const loading = ref(false)
+const servicioStore = useServicioStore()
+const authStore = useAuthStore()
+
+const loading = computed(() => servicioStore.cargando)
 const guardando = ref(false)
 const mostrarModal = ref(false)
 const esEdicion = ref(false)
 const servicioEditando = ref(null)
 
-const servicios = ref([])
-const categorias = ref([])
+const servicios = computed(() => servicioStore.servicios)
+const categorias = computed(() => servicioStore.categorias)
 
 const filtros = reactive({
   busqueda: '',
@@ -183,28 +187,27 @@ const formulario = reactive({
   idBarberia: '' // Se obtendrá del perfil del barbero
 })
 
-onMounted(() => {
-  cargarServicios()
-  cargarCategorias()
+onMounted(async () => {
+  const usuario = authStore.usuario
+  if (usuario && usuario.idBarberia) {
+    formulario.idBarberia = usuario.idBarberia
+  }
+  await cargarServicios()
+  await cargarCategorias()
 })
 
 async function cargarServicios() {
-  loading.value = true
   try {
-    const response = await servicioService.obtenerServicios(filtros)
-    servicios.value = Array.isArray(response) ? response : (response.items || [])
+    await servicioStore.cargarServicios(filtros)
   } catch (error) {
     console.error('Error al cargar servicios:', error)
-    alert('Error al cargar los servicios')
-  } finally {
-    loading.value = false
+    alert(servicioStore.error || 'Error al cargar los servicios')
   }
 }
 
 async function cargarCategorias() {
   try {
-    const response = await servicioService.obtenerCategorias()
-    categorias.value = Array.isArray(response) ? response : (response.items || [])
+    await servicioStore.cargarCategorias()
   } catch (error) {
     console.error('Error al cargar categorías:', error)
   }
@@ -257,10 +260,10 @@ async function guardarServicio() {
     }
     
     if (esEdicion.value && servicioEditando.value) {
-      await servicioService.actualizarServicio(servicioEditando.value.id, datosParaEnviar)
+      await servicioStore.actualizarServicio(servicioEditando.value.id, datosParaEnviar)
       alert('Servicio actualizado correctamente')
     } else {
-      await servicioService.crearServicio(datosParaEnviar)
+      await servicioStore.crearServicio(datosParaEnviar)
       alert('Servicio creado correctamente')
     }
     
@@ -268,7 +271,7 @@ async function guardarServicio() {
     await cargarServicios()
   } catch (error) {
     console.error('Error al guardar servicio:', error)
-    alert(error.response?.data?.message || 'Error al guardar el servicio')
+    alert(servicioStore.error || 'Error al guardar el servicio')
   } finally {
     guardando.value = false
   }
@@ -280,12 +283,12 @@ async function eliminarServicio(id) {
   }
   
   try {
-    await servicioService.eliminarServicio(id)
+    await servicioStore.eliminarServicio(id)
     alert('Servicio eliminado correctamente')
     await cargarServicios()
   } catch (error) {
     console.error('Error al eliminar servicio:', error)
-    alert('Error al eliminar el servicio')
+    alert(servicioStore.error || 'Error al eliminar el servicio')
   }
 }
 </script>

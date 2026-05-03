@@ -48,24 +48,24 @@
 - [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/ReservaRepository.cs
 - [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/SolicitudAfiliacionRepository.cs
 - [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/NotificacionRepository.cs
-- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IPerfilBarberiaRepository.cs
-- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IServicioRepository.cs
-- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/ICategoriaServicioRepository.cs
-- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IProductoRepository.cs
-- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/ICategoriaProductoRepository.cs
-- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IAfiliacionBarberoRepository.cs
-- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IEstadisticaBarberoRepository.cs
-- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IEstadisticaBarberiaRepository.cs
-- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IEstadisticaProductoRepository.cs
-- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/PerfilBarberiaRepository.cs
-- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/ServicioRepository.cs
-- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/CategoriaServicioRepository.cs
-- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/ProductoRepository.cs
-- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/CategoriaProductoRepository.cs
-- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/AfiliacionBarberoRepository.cs
-- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/EstadisticaBarberoRepository.cs
-- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/EstadisticaBarberiaRepository.cs
-- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/EstadisticaProductoRepository.cs
+- [x] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IPerfilBarberiaRepository.cs
+- [x] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IServicioRepository.cs
+- [x] API.Data/IUnitOfWorks/Interfaces/Multibarbero/ICategoriaServicioRepository.cs
+- [x] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IProductoRepository.cs
+- [x] API.Data/IUnitOfWorks/Interfaces/Multibarbero/ICategoriaProductoRepository.cs
+- [x] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IAfiliacionBarberoRepository.cs
+- [x] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IEstadisticaBarberoRepository.cs
+- [x] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IEstadisticaBarberiaRepository.cs
+- [x] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IEstadisticaProductoRepository.cs
+- [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/PerfilBarberiaRepository.cs
+- [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/ServicioRepository.cs
+- [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/CategoriaServicioRepository.cs
+- [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/ProductoRepository.cs
+- [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/CategoriaProductoRepository.cs
+- [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/AfiliacionBarberoRepository.cs
+- [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/EstadisticaBarberoRepository.cs
+- [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/EstadisticaBarberiaRepository.cs
+- [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/EstadisticaProductoRepository.cs
 
 ## Backend - Fase 4: Servicios Dominio
 - [x] API.Domain/Interfaces/Multibarbero/IPlanSuscripcionService.cs
@@ -81,12 +81,12 @@
 - [ ] API.Domain/Interfaces/Multibarbero/IPerfilBarberiaService.cs
 - [ ] API.Domain/Interfaces/Multibarbero/IServicioService.cs
 - [ ] API.Domain/Interfaces/Multibarbero/IProductoService.cs
-- [ ] API.Domain/Interfaces/Multibarbero/IAfiliacionBarberoService.cs
+- [x] API.Domain/Interfaces/Multibarbero/IAfiliacionBarberoService.cs
 - [ ] API.Domain/Interfaces/Multibarbero/IEstadisticaService.cs
 - [ ] API.Domain/Services/Multibarbero/PerfilBarberiaService.cs
 - [ ] API.Domain/Services/Multibarbero/ServicioService.cs
 - [ ] API.Domain/Services/Multibarbero/ProductoService.cs
-- [ ] API.Domain/Services/Multibarbero/AfiliacionBarberoService.cs
+- [x] API.Domain/Services/Multibarbero/AfiliacionBarberoService.cs
 - [ ] API.Domain/Services/Multibarbero/EstadisticaService.cs
 
 ## Backend - Fase 5: DTOs
@@ -145,7 +145,7 @@
 - [x] Crear proyecto Vue 3
 - [x] Implementar componentes y vistas
   - [x] DashboardBarberoView (conectado parcialmente)
-  - [x] ServiciosView (CRUD completo - falta conectar)
+  - [x] ServiciosView (CRUD completo - conectado con store)
   - [x] ReservasView (Gestión completa - falta conectar)
   - [x] AfiliacionesView (falta conectar)
   - [x] EstadisticasView (falta conectar)
@@ -171,20 +171,20 @@
   - [x] dashboardComercialService.js
   - [x] dashboardClienteService.js
   - [x] planService.js
-- [ ] Crear stores Pinia
+- [x] Crear stores Pinia
   - [x] authStore.js
   - [x] notificacionStore.js
-  - [ ] servicioStore.js
-  - [ ] reservaStore.js
-  - [ ] afiliacionStore.js
-  - [ ] barberoStore.js
-  - [ ] barberiaStore.js
+  - [x] servicioStore.js
+  - [x] reservaStore.js
+  - [x] afiliacionStore.js
+  - [x] barberoStore.js
+  - [x] barberiaStore.js
   - [ ] estadisticaStore.js
   - [ ] planStore.js
 - [ ] Conectar vistas con API real
   - [x] DashboardBarberoView conectado parcialmente
   - [x] DashboardComercialView conectado
-  - [ ] ServiciosView conectado
+  - [x] ServiciosView conectado
   - [ ] ReservasView conectado
   - [ ] AfiliacionesView conectado
   - [ ] EstadisticasView conectado
