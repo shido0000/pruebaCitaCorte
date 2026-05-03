@@ -1,1 +1,1 @@
-Nothing needs to be added to the .gitignore file since only Vue component files (.vue) were modified, which are source code files that should not be ignored.
+Nothing needs to be added to .gitignore since only Vue component files (.vue) were modified, which are source code files that should not be ignored.
