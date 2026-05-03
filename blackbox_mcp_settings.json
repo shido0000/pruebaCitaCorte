@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "github.com/jeremylongshore/claude-code-plugins-plus-skills/tree/main/plugins/mcp/design-to-code": {
+      "name": "design-to-code",
+      "type": "mcp",
+      "description": "Design to Code MCP server for Figma and screenshot to component generation"
+    }
+  }
+}

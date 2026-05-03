@@ -1,0 +1,86 @@
+# TODO - Implementación Sistema Multibarbero
+
+## Backend - Fase 1: Enums y Entidades
+- [ ] API.Data/Enum/Multibarbero/TipoPlan.cs
+- [ ] API.Data/Enum/Multibarbero/TipoProveedor.cs
+- [ ] API.Data/Enum/Multibarbero/EstadoReserva.cs
+- [x] API.Data/Enum/Multibarbero/EstadoSolicitudAfiliacion.cs
+- [x] API.Data/Enum/Multibarbero/EstadoSuscripcion.cs
+- [x] API.Data/Enum/Multibarbero/TipoNotificacion.cs
+- [x] API.Data/Enum/DiaSemana.cs
+- [x] API.Data/Entidades/Multibarbero/PlanSuscripcion.cs
+- [x] API.Data/Entidades/Multibarbero/CaracteristicaPlan.cs
+- [x] API.Data/Entidades/Multibarbero/LimitesPlan.cs
+- [ ] API.Data/Entidades/Multibarbero/PerfilBarbero.cs
+- [ ] API.Data/Entidades/Multibarbero/PerfilBarberia.cs
+- [ ] API.Data/Entidades/Multibarbero/PerfilCliente.cs
+- [ ] API.Data/Entidades/Multibarbero/Servicio.cs
+- [ ] API.Data/Entidades/Multibarbero/CategoriaServicio.cs
+- [ ] API.Data/Entidades/Multibarbero/Producto.cs
+- [ ] API.Data/Entidades/Multibarbero/CategoriaProducto.cs
+- [ ] API.Data/Entidades/Multibarbero/Reserva.cs
+- [ ] API.Data/Entidades/Multibarbero/SolicitudAfiliacion.cs
+- [ ] API.Data/Entidades/Multibarbero/AfiliacionBarbero.cs
+- [ ] API.Data/Entidades/Multibarbero/Notificacion.cs
+- [ ] API.Data/Entidades/Multibarbero/EstadisticaBarbero.cs
+- [ ] API.Data/Entidades/Multibarbero/EstadisticaBarberia.cs
+- [ ] API.Data/Entidades/Multibarbero/EstadisticaProducto.cs
+
+## Backend - Fase 2: Configuraciones BD
+- [ ] API.Data/ConfiguracionEntidades/Multibarbero/PlanSuscripcionConfiguracionBD.cs
+- [ ] API.Data/ConfiguracionEntidades/Multibarbero/PerfilBarberoConfiguracionBD.cs
+- [ ] API.Data/ConfiguracionEntidades/Multibarbero/PerfilBarberiaConfiguracionBD.cs
+- [ ] API.Data/ConfiguracionEntidades/Multibarbero/ReservaConfiguracionBD.cs
+- [ ] API.Data/ConfiguracionEntidades/Multibarbero/SolicitudAfiliacionConfiguracionBD.cs
+- [ ] API.Data/ConfiguracionEntidades/Multibarbero/AfiliacionBarberoConfiguracionBD.cs
+- [ ] API.Data/ConfiguracionEntidades/Multibarbero/NotificacionConfiguracionBD.cs
+- [ ] API.Data/ConfiguracionEntidades/Multibarbero/ServicioConfiguracionBD.cs
+- [ ] API.Data/ConfiguracionEntidades/Multibarbero/ProductoConfiguracionBD.cs
+
+## Backend - Fase 3: Repositorios
+- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IPlanSuscripcionRepository.cs
+- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IPerfilBarberoRepository.cs
+- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IReservaRepository.cs
+- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/ISolicitudAfiliacionRepository.cs
+- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/INotificacionRepository.cs
+- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/PlanSuscripcionRepository.cs
+- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/PerfilBarberoRepository.cs
+- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/ReservaRepository.cs
+- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/SolicitudAfiliacionRepository.cs
+- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/NotificacionRepository.cs
+
+## Backend - Fase 4: Servicios Dominio
+- [ ] API.Domain/Interfaces/Multibarbero/IPlanSuscripcionService.cs
+- [ ] API.Domain/Interfaces/Multibarbero/IPerfilBarberoService.cs
+- [ ] API.Domain/Interfaces/Multibarbero/IReservaService.cs
+- [ ] API.Domain/Interfaces/Multibarbero/ISolicitudAfiliacionService.cs
+- [ ] API.Domain/Interfaces/Multibarbero/INotificacionService.cs
+- [ ] API.Domain/Services/Multibarbero/PlanSuscripcionService.cs
+- [ ] API.Domain/Services/Multibarbero/PerfilBarberoService.cs
+- [ ] API.Domain/Services/Multibarbero/ReservaService.cs
+- [ ] API.Domain/Services/Multibarbero/SolicitudAfiliacionService.cs
+- [ ] API.Domain/Services/Multibarbero/NotificacionService.cs
+
+## Backend - Fase 5: DTOs
+- [ ] PlanSuscripcion DTOs
+- [ ] PerfilBarbero DTOs
+- [ ] Reserva DTOs
+- [ ] Notificacion DTOs
+- [ ] Afiliacion DTOs
+
+## Backend - Fase 6: Validadores
+- [ ] Validadores para cada entity
+
+## Backend - Fase 7: Controllers
+- [ ] Controladores API
+
+## Backend - Fase 8: Actualización configs existentes
+- [ ] Actualizar IApiDbContext.cs
+- [ ] Actualizar ApiDbContext.cs
+- [ ] Actualizar IUnitOfWork.cs
+- [ ] Actualizar UnitOfWork.cs
+- [ ] Actualizar IoCRegister.cs
+
+## Frontend - Vue 3
+- [ ] Crear proyecto Vue 3
+- [ ] Implementar componentes y vistas
