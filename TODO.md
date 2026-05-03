@@ -87,5 +87,41 @@
 - [x] Actualizar IoCRegister.cs
 
 ## Frontend - Vue 3
-- [ ] Crear proyecto Vue 3
-- [ ] Implementar componentes y vistas
+- [x] Crear proyecto Vue 3
+- [x] Implementar componentes y vistas
+  - [x] DashboardBarberoView (conectado)
+  - [x] ServiciosView (CRUD completo)
+  - [x] ReservasView (Gestión completa)
+  - [x] AfiliacionesView
+  - [x] EstadisticasView
+  - [x] PerfilView (Barbero)
+  - [x] DashboardComercialView (conectado)
+  - [x] BarberosView (Comercial)
+  - [x] BarberiasView (Comercial)
+  - [x] DashboardClienteView
+  - [x] ExplorarView (Clientes)
+  - [x] MisReservasView (Cliente)
+  - [x] HistorialView (Cliente)
+  - [x] PerfilView (Cliente)
+- [x] Crear servicios API
+  - [x] api.js (configuración axios)
+  - [x] authService.js
+  - [x] servicioService.js
+  - [x] reservaService.js
+  - [x] afiliacionService.js
+  - [x] notificacionService.js
+  - [x] barberoService.js
+  - [x] barberiaService.js
+  - [x] dashboardBarberoService.js
+  - [x] dashboardComercialService.js
+  - [x] dashboardClienteService.js
+- [x] Crear stores Pinia
+  - [x] authStore.js
+  - [x] notificacionStore.js
+- [x] Conectar vistas con API real
+  - [x] DashboardBarberoView conectado
+  - [x] DashboardComercialView conectado
+  - [ ] ServiciosView conectado
+  - [ ] ReservasView conectado
+  - [ ] AfiliacionesView conectado
+  - [ ] Resto de vistas por conectar
