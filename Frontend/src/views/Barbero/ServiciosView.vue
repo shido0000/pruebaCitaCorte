@@ -241,7 +241,7 @@ function resetearFormulario() {
   formulario.nombre = ''
   formulario.descripcion = ''
   formulario.precio = 0
-  formulario.duracionMinutos: 30
+  formulario.duracionMinutos = 30
   formulario.categoriaId = ''
   formulario.idBarberia = ''
 }
