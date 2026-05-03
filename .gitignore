@@ -1,4 +1,3 @@
-```
 # Compiled and build artifacts
 *.pyc
 __pycache__/
@@ -7,14 +6,9 @@ __pycache__/
 *.dll
 *.so
 *.exe
-*.out
 *.class
+*.out
 *.a
-*.lib
-*.dylib
-*.jar
-*.war
-*.ear
 
 # Dependencies
 node_modules/
@@ -28,40 +22,30 @@ venv/
 dist/
 build/
 target/
-bin/
-obj/
-Debug/
-Release/
+coverage/
+htmlcov/
+*.egg-info/
 
-# Logs and temp files
-*.log
-*.tmp
-*.swp
-*.swo
-*.bak
-*.cache
-
-# Editors
+# Editors and IDEs
 .vscode/
 .idea/
 *.swp
 *.swo
+*.tmp
 
-# OS generated files
+# System files
 .DS_Store
 Thumbs.db
-desktop.ini
+*.log
 
-# Testing
-.coverage
-coverage/
-htmlcov/
-.nyc_output/
+# Cache directories
 .mypy_cache/
 .pytest_cache/
-.tox/
+.gradle/
+.julia/
+zig-out/
 
-# Compression
+# Compressed files
 *.zip
 *.gz
 *.tar
@@ -84,4 +68,3 @@ htmlcov/
 *.tar.bz2
 *.tar.xz
 *.tar.zst
-```
