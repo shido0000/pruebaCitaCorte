@@ -177,21 +177,37 @@ namespace API.Application.IoC
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
 
+            // Repositorios Multibarbero
+            services.AddScoped<IPlanSuscripcionRepository, PlanSuscripcionRepository>();
+            services.AddScoped<IPerfilBarberoRepository, PerfilBarberoRepository>();
+            services.AddScoped<IReservaRepository, ReservaRepository>();
+            services.AddScoped<ISolicitudAfiliacionRepository, SolicitudAfiliacionRepository>();
+            services.AddScoped<INotificacionRepository, NotificacionRepository>();
+
             return services;
         }
 
         public static IServiceCollection RegistrarServiciosDominio(this IServiceCollection services)
         {
+            // Servicios Seguridad
             services.AddScoped<IAutenticacionService, AutenticacionService>();
             services.AddScoped<IPermisoService, PermisoService>();
             services.AddScoped<IRolPermisoService, RolPermisoService>();
             services.AddScoped<IRolService, RolService>();
             services.AddScoped<IUsuarioService, UsuarioService>();
 
+            // Servicios Nomencladores
             services.AddScoped<ICategoriaService, CategoriaService>();
             services.AddScoped<IOrigenService, OrigenService>();
             services.AddScoped<IGrupoService, GrupoService>();
             services.AddScoped<IFamiliaService, FamiliaService>();
+
+            // Servicios Multibarbero
+            services.AddScoped<IPlanSuscripcionService, PlanSuscripcionService>();
+            services.AddScoped<IPerfilBarberoService, PerfilBarberoService>();
+            services.AddScoped<IReservaService, ReservaService>();
+            services.AddScoped<ISolicitudAfiliacionService, SolicitudAfiliacionService>();
+            services.AddScoped<INotificacionService, NotificacionService>();
 
             services.AddScoped(typeof(IBaseService<EntidadBase, AbstractValidator<EntidadBase>>), typeof(BasicService<EntidadBase, AbstractValidator<EntidadBase>>));
 

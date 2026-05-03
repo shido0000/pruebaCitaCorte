@@ -80,11 +80,11 @@
 - [ ] Controladores API
 
 ## Backend - Fase 8: Actualización configs existentes
-- [ ] Actualizar IApiDbContext.cs
-- [ ] Actualizar ApiDbContext.cs
-- [ ] Actualizar IUnitOfWork.cs
-- [ ] Actualizar UnitOfWork.cs
-- [ ] Actualizar IoCRegister.cs
+- [x] Actualizar IApiDbContext.cs
+- [x] Actualizar ApiDbContext.cs
+- [x] Actualizar IUnitOfWork.cs
+- [x] Actualizar UnitOfWork.cs
+- [x] Actualizar IoCRegister.cs
 
 ## Frontend - Vue 3
 - [ ] Crear proyecto Vue 3
