@@ -48,36 +48,91 @@
 - [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/ReservaRepository.cs
 - [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/SolicitudAfiliacionRepository.cs
 - [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/NotificacionRepository.cs
+- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IPerfilBarberiaRepository.cs
+- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IServicioRepository.cs
+- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/ICategoriaServicioRepository.cs
+- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IProductoRepository.cs
+- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/ICategoriaProductoRepository.cs
+- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IAfiliacionBarberoRepository.cs
+- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IEstadisticaBarberoRepository.cs
+- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IEstadisticaBarberiaRepository.cs
+- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IEstadisticaProductoRepository.cs
+- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/PerfilBarberiaRepository.cs
+- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/ServicioRepository.cs
+- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/CategoriaServicioRepository.cs
+- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/ProductoRepository.cs
+- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/CategoriaProductoRepository.cs
+- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/AfiliacionBarberoRepository.cs
+- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/EstadisticaBarberoRepository.cs
+- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/EstadisticaBarberiaRepository.cs
+- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/EstadisticaProductoRepository.cs
 
 ## Backend - Fase 4: Servicios Dominio
-- [ ] API.Domain/Interfaces/Multibarbero/IPlanSuscripcionService.cs
-- [ ] API.Domain/Interfaces/Multibarbero/IPerfilBarberoService.cs
-- [ ] API.Domain/Interfaces/Multibarbero/IReservaService.cs
-- [ ] API.Domain/Interfaces/Multibarbero/ISolicitudAfiliacionService.cs
-- [ ] API.Domain/Interfaces/Multibarbero/INotificacionService.cs
-- [ ] API.Domain/Services/Multibarbero/PlanSuscripcionService.cs
-- [ ] API.Domain/Services/Multibarbero/PerfilBarberoService.cs
-- [ ] API.Domain/Services/Multibarbero/ReservaService.cs
-- [ ] API.Domain/Services/Multibarbero/SolicitudAfiliacionService.cs
-- [ ] API.Domain/Services/Multibarbero/NotificacionService.cs
+- [x] API.Domain/Interfaces/Multibarbero/IPlanSuscripcionService.cs
+- [x] API.Domain/Interfaces/Multibarbero/IPerfilBarberoService.cs
+- [x] API.Domain/Interfaces/Multibarbero/IReservaService.cs
+- [x] API.Domain/Interfaces/Multibarbero/ISolicitudAfiliacionService.cs
+- [x] API.Domain/Interfaces/Multibarbero/INotificacionService.cs
+- [x] API.Domain/Services/Multibarbero/PlanSuscripcionService.cs
+- [x] API.Domain/Services/Multibarbero/PerfilBarberoService.cs
+- [x] API.Domain/Services/Multibarbero/ReservaService.cs
+- [x] API.Domain/Services/Multibarbero/SolicitudAfiliacionService.cs
+- [x] API.Domain/Services/Multibarbero/NotificacionService.cs
+- [ ] API.Domain/Interfaces/Multibarbero/IPerfilBarberiaService.cs
+- [ ] API.Domain/Interfaces/Multibarbero/IServicioService.cs
+- [ ] API.Domain/Interfaces/Multibarbero/IProductoService.cs
+- [ ] API.Domain/Interfaces/Multibarbero/IAfiliacionBarberoService.cs
+- [ ] API.Domain/Interfaces/Multibarbero/IEstadisticaService.cs
+- [ ] API.Domain/Services/Multibarbero/PerfilBarberiaService.cs
+- [ ] API.Domain/Services/Multibarbero/ServicioService.cs
+- [ ] API.Domain/Services/Multibarbero/ProductoService.cs
+- [ ] API.Domain/Services/Multibarbero/AfiliacionBarberoService.cs
+- [ ] API.Domain/Services/Multibarbero/EstadisticaService.cs
 
 ## Backend - Fase 5: DTOs
-- [ ] PlanSuscripcion DTOs
-- [ ] PerfilBarbero DTOs
-- [ ] Reserva DTOs
-- [ ] Notificacion DTOs
-- [ ] Afiliacion DTOs
+- [x] PlanSuscripcion DTOs (Crear, Actualizar, Dto, Detalles, ListadoPaginado, Filtro)
+- [x] PerfilBarbero DTOs (Crear, Actualizar, Dto, Detalles, ListadoPaginado, Filtro)
+- [x] Reserva DTOs (Crear, Actualizar, Dto, Detalles, ListadoPaginado, Filtro)
+- [x] Notificacion DTOs (Crear, Actualizar, Dto, Detalles, ListadoPaginado, Filtro)
+- [x] SolicitudAfiliacion DTOs (Crear, Actualizar, Dto, Detalles)
+- [ ] PerfilBarberia DTOs (Crear, Actualizar, Dto, Detalles, ListadoPaginado, Filtro)
+- [ ] Servicio DTOs (Crear, Actualizar, Dto, Detalles, ListadoPaginado, Filtro)
+- [ ] CategoriaServicio DTOs
+- [ ] Producto DTOs (Crear, Actualizar, Dto, Detalles, ListadoPaginado, Filtro)
+- [ ] CategoriaProducto DTOs
+- [ ] AfiliacionBarbero DTOs
+- [ ] EstadisticaBarbero DTOs
+- [ ] EstadisticaBarberia DTOs
+- [ ] EstadisticaProducto DTOs
 
 ## Backend - Fase 6: Validadores
-- [x] Validadores para cada entity
-  - [x] CrearPlanSuscripcionDtoValidator.cs
-  - [x] CrearPerfilBarberoDtoValidator.cs
-  - [x] CrearReservaDtoValidator.cs
-  - [x] CrearSolicitudAfiliacionDtoValidator.cs
-  - [x] CrearNotificacionDtoValidator.cs
+- [x] CrearPlanSuscripcionDtoValidator.cs
+- [x] CrearPerfilBarberoDtoValidator.cs
+- [x] CrearReservaDtoValidator.cs
+- [x] CrearSolicitudAfiliacionDtoValidator.cs
+- [x] CrearNotificacionDtoValidator.cs
+- [ ] ActualizarPlanSuscripcionDtoValidator.cs
+- [ ] ActualizarPerfilBarberoDtoValidator.cs
+- [ ] ActualizarReservaDtoValidator.cs
+- [ ] ActualizarSolicitudAfiliacionDtoValidator.cs
+- [ ] ActualizarNotificacionDtoValidator.cs
+- [ ] CrearPerfilBarberiaDtoValidator.cs
+- [ ] CrearServicioDtoValidator.cs
+- [ ] CrearProductoDtoValidator.cs
 
 ## Backend - Fase 7: Controllers
-- [ ] Controladores API
+- [x] PlanSuscripcionController.cs
+- [x] PerfilBarberoController.cs
+- [x] ReservaController.cs
+- [x] SolicitudAfiliacionController.cs
+- [x] NotificacionController.cs
+- [ ] PerfilBarberiaController.cs
+- [ ] ServicioController.cs
+- [ ] CategoriaServicioController.cs
+- [ ] ProductoController.cs
+- [ ] CategoriaProductoController.cs
+- [ ] AfiliacionBarberoController.cs
+- [ ] EstadisticaController.cs
 
 ## Backend - Fase 8: Actualización configs existentes
 - [x] Actualizar IApiDbContext.cs
@@ -89,20 +144,20 @@
 ## Frontend - Vue 3
 - [x] Crear proyecto Vue 3
 - [x] Implementar componentes y vistas
-  - [x] DashboardBarberoView (conectado)
-  - [x] ServiciosView (CRUD completo)
-  - [x] ReservasView (Gestión completa)
-  - [x] AfiliacionesView
-  - [x] EstadisticasView
-  - [x] PerfilView (Barbero)
+  - [x] DashboardBarberoView (conectado parcialmente)
+  - [x] ServiciosView (CRUD completo - falta conectar)
+  - [x] ReservasView (Gestión completa - falta conectar)
+  - [x] AfiliacionesView (falta conectar)
+  - [x] EstadisticasView (falta conectar)
+  - [x] PerfilView (Barbero - falta conectar)
   - [x] DashboardComercialView (conectado)
-  - [x] BarberosView (Comercial)
-  - [x] BarberiasView (Comercial)
-  - [x] DashboardClienteView
-  - [x] ExplorarView (Clientes)
-  - [x] MisReservasView (Cliente)
-  - [x] HistorialView (Cliente)
-  - [x] PerfilView (Cliente)
+  - [ ] BarberosView (Comercial - placeholder)
+  - [ ] BarberiasView (Comercial - placeholder)
+  - [ ] DashboardClienteView (placeholder)
+  - [ ] ExplorarView (Clientes - no existe)
+  - [ ] MisReservasView (Cliente - placeholder)
+  - [ ] HistorialView (Cliente - placeholder)
+  - [ ] PerfilView (Cliente - placeholder)
 - [x] Crear servicios API
   - [x] api.js (configuración axios)
   - [x] authService.js
@@ -115,13 +170,29 @@
   - [x] dashboardBarberoService.js
   - [x] dashboardComercialService.js
   - [x] dashboardClienteService.js
-- [x] Crear stores Pinia
+  - [x] planService.js
+- [ ] Crear stores Pinia
   - [x] authStore.js
   - [x] notificacionStore.js
-- [x] Conectar vistas con API real
-  - [x] DashboardBarberoView conectado
+  - [ ] servicioStore.js
+  - [ ] reservaStore.js
+  - [ ] afiliacionStore.js
+  - [ ] barberoStore.js
+  - [ ] barberiaStore.js
+  - [ ] estadisticaStore.js
+  - [ ] planStore.js
+- [ ] Conectar vistas con API real
+  - [x] DashboardBarberoView conectado parcialmente
   - [x] DashboardComercialView conectado
   - [ ] ServiciosView conectado
   - [ ] ReservasView conectado
   - [ ] AfiliacionesView conectado
-  - [ ] Resto de vistas por conectar
+  - [ ] EstadisticasView conectado
+  - [ ] PerfilView (Barbero) conectado
+  - [ ] BarberosView (Comercial) conectado
+  - [ ] BarberiasView (Comercial) conectado
+  - [ ] DashboardClienteView conectado
+  - [ ] ExplorarView conectado
+  - [ ] MisReservasView conectado
+  - [ ] HistorialView conectado
+  - [ ] PerfilView (Cliente) conectado

@@ -183,6 +183,7 @@ namespace API.Application.IoC
             services.AddScoped<IReservaRepository, ReservaRepository>();
             services.AddScoped<ISolicitudAfiliacionRepository, SolicitudAfiliacionRepository>();
             services.AddScoped<INotificacionRepository, NotificacionRepository>();
+            services.AddScoped<IAfiliacionBarberoRepository, AfiliacionBarberoRepository>();
 
             return services;
         }
@@ -208,6 +209,7 @@ namespace API.Application.IoC
             services.AddScoped<IReservaService, ReservaService>();
             services.AddScoped<ISolicitudAfiliacionService, SolicitudAfiliacionService>();
             services.AddScoped<INotificacionService, NotificacionService>();
+            services.AddScoped<IAfiliacionBarberoService, AfiliacionBarberoService>();
 
             services.AddScoped(typeof(IBaseService<EntidadBase, AbstractValidator<EntidadBase>>), typeof(BasicService<EntidadBase, AbstractValidator<EntidadBase>>));
 
