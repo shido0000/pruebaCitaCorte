@@ -179,7 +179,8 @@ const formulario = reactive({
   descripcion: '',
   precio: 0,
   duracionMinutos: 30,
-  categoriaId: ''
+  categoriaId: '',
+  idBarberia: '' // Se obtendrá del perfil del barbero
 })
 
 onMounted(() => {
@@ -190,12 +191,8 @@ onMounted(() => {
 async function cargarServicios() {
   loading.value = true
   try {
-    const params = {}
-    if (filtros.busqueda) params.nombre = filtros.busqueda
-    if (filtros.categoria) params.categoriaId = filtros.categoria
-    
-    const response = await servicioService.obtenerServicios(params)
-    servicios.value = response.items || response || []
+    const response = await servicioService.obtenerServicios(filtros)
+    servicios.value = Array.isArray(response) ? response : (response.items || [])
   } catch (error) {
     console.error('Error al cargar servicios:', error)
     alert('Error al cargar los servicios')
@@ -207,7 +204,7 @@ async function cargarServicios() {
 async function cargarCategorias() {
   try {
     const response = await servicioService.obtenerCategorias()
-    categorias.value = response.items || response || []
+    categorias.value = Array.isArray(response) ? response : (response.items || [])
   } catch (error) {
     console.error('Error al cargar categorías:', error)
   }
@@ -222,7 +219,8 @@ function abrirModal(servicio = null) {
     formulario.descripcion = servicio.descripcion || ''
     formulario.precio = servicio.precio
     formulario.duracionMinutos = servicio.duracionMinutos
-    formulario.categoriaId = servicio.categoriaId
+    formulario.categoriaId = servicio.idCategoriaServicio || servicio.categoriaId
+    formulario.idBarberia = servicio.idBarberia || servicio.barberiaId
   } else {
     resetearFormulario()
   }
@@ -240,8 +238,9 @@ function resetearFormulario() {
   formulario.nombre = ''
   formulario.descripcion = ''
   formulario.precio = 0
-  formulario.duracionMinutos = 30
+  formulario.duracionMinutos: 30
   formulario.categoriaId = ''
+  formulario.idBarberia = ''
 }
 
 function editarServicio(servicio) {
@@ -251,11 +250,17 @@ function editarServicio(servicio) {
 async function guardarServicio() {
   guardando.value = true
   try {
+    const datosParaEnviar = {
+      ...formulario,
+      idCategoriaServicio: formulario.categoriaId,
+      categoriaId: undefined
+    }
+    
     if (esEdicion.value && servicioEditando.value) {
-      await servicioService.actualizarServicio(servicioEditando.value.id, formulario)
+      await servicioService.actualizarServicio(servicioEditando.value.id, datosParaEnviar)
       alert('Servicio actualizado correctamente')
     } else {
-      await servicioService.crearServicio(formulario)
+      await servicioService.crearServicio(datosParaEnviar)
       alert('Servicio creado correctamente')
     }
     
