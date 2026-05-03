@@ -1,3 +1,4 @@
+using API.Data.Enum.Multibarbero;
 using System.Text.Json.Serialization;
 
 namespace API.Application.Dtos.Multibarbero.Reserva
