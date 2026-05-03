@@ -1,9 +1,9 @@
 # TODO - Implementación Sistema Multibarbero
 
 ## Backend - Fase 1: Enums y Entidades
-- [ ] API.Data/Enum/Multibarbero/TipoPlan.cs
-- [ ] API.Data/Enum/Multibarbero/TipoProveedor.cs
-- [ ] API.Data/Enum/Multibarbero/EstadoReserva.cs
+- [x] API.Data/Enum/Multibarbero/TipoPlan.cs
+- [x] API.Data/Enum/Multibarbero/TipoProveedor.cs
+- [x] API.Data/Enum/Multibarbero/EstadoReserva.cs
 - [x] API.Data/Enum/Multibarbero/EstadoSolicitudAfiliacion.cs
 - [x] API.Data/Enum/Multibarbero/EstadoSuscripcion.cs
 - [x] API.Data/Enum/Multibarbero/TipoNotificacion.cs
@@ -11,20 +11,20 @@
 - [x] API.Data/Entidades/Multibarbero/PlanSuscripcion.cs
 - [x] API.Data/Entidades/Multibarbero/CaracteristicaPlan.cs
 - [x] API.Data/Entidades/Multibarbero/LimitesPlan.cs
-- [ ] API.Data/Entidades/Multibarbero/PerfilBarbero.cs
-- [ ] API.Data/Entidades/Multibarbero/PerfilBarberia.cs
-- [ ] API.Data/Entidades/Multibarbero/PerfilCliente.cs
-- [ ] API.Data/Entidades/Multibarbero/Servicio.cs
-- [ ] API.Data/Entidades/Multibarbero/CategoriaServicio.cs
-- [ ] API.Data/Entidades/Multibarbero/Producto.cs
-- [ ] API.Data/Entidades/Multibarbero/CategoriaProducto.cs
-- [ ] API.Data/Entidades/Multibarbero/Reserva.cs
-- [ ] API.Data/Entidades/Multibarbero/SolicitudAfiliacion.cs
-- [ ] API.Data/Entidades/Multibarbero/AfiliacionBarbero.cs
-- [ ] API.Data/Entidades/Multibarbero/Notificacion.cs
-- [ ] API.Data/Entidades/Multibarbero/EstadisticaBarbero.cs
-- [ ] API.Data/Entidades/Multibarbero/EstadisticaBarberia.cs
-- [ ] API.Data/Entidades/Multibarbero/EstadisticaProducto.cs
+- [x] API.Data/Entidades/Multibarbero/PerfilBarbero.cs
+- [x] API.Data/Entidades/Multibarbero/PerfilBarberia.cs
+- [x] API.Data/Entidades/Multibarbero/Servicio.cs
+- [x] API.Data/Entidades/Multibarbero/CategoriaServicio.cs
+- [x] API.Data/Entidades/Multibarbero/PerfilCliente.cs
+- [x] API.Data/Entidades/Multibarbero/Producto.cs
+- [x] API.Data/Entidades/Multibarbero/CategoriaProducto.cs
+- [x] API.Data/Entidades/Multibarbero/Reserva.cs
+- [x] API.Data/Entidades/Multibarbero/SolicitudAfiliacion.cs
+- [x] API.Data/Entidades/Multibarbero/AfiliacionBarbero.cs
+- [x] API.Data/Entidades/Multibarbero/Notificacion.cs
+- [x] API.Data/Entidades/Multibarbero/EstadisticaBarbero.cs
+- [x] API.Data/Entidades/Multibarbero/EstadisticaBarberia.cs
+- [x] API.Data/Entidades/Multibarbero/EstadisticaProducto.cs
 
 ## Backend - Fase 2: Configuraciones BD
 - [ ] API.Data/ConfiguracionEntidades/Multibarbero/PlanSuscripcionConfiguracionBD.cs
