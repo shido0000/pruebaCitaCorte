@@ -219,6 +219,7 @@ namespace API.Application.IoC
             services.AddScoped<INotificacionService, NotificacionService>();
             services.AddScoped<IAfiliacionBarberoService, AfiliacionBarberoService>();
             services.AddScoped<IServicioService, ServicioService>();
+            services.AddScoped<IPerfilBarberiaService, PerfilBarberiaService>();
 
             services.AddScoped(typeof(IBaseService<EntidadBase, AbstractValidator<EntidadBase>>), typeof(BasicService<EntidadBase, AbstractValidator<EntidadBase>>));
 
