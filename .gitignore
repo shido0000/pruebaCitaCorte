@@ -9,9 +9,6 @@ __pycache__/
 *.exe
 *.class
 *.out
-*.a
-*.lib
-*.pdb
 
 # Dependencies
 node_modules/
@@ -21,29 +18,36 @@ venv/
 .env.local
 .env.*
 
-# Build outputs
-bin/
-obj/
-Debug/
-Release/
-build/
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Editors
+.vscode/
+.idea/
+
+# Build directories
 dist/
+build/
 target/
 .gradle/
 
-# IDE and editor files
-.vscode/
-.idea/
-*.swp
-*.swo
-*.tmp
-*.log
-*.bak
-*~
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Python specific
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
 
 # OS generated files
 .DS_Store
 Thumbs.db
-ehthumbs.db
-Icon?
 ```

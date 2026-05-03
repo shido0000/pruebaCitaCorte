@@ -69,7 +69,12 @@
 - [ ] Afiliacion DTOs
 
 ## Backend - Fase 6: Validadores
-- [ ] Validadores para cada entity
+- [x] Validadores para cada entity
+  - [x] CrearPlanSuscripcionDtoValidator.cs
+  - [x] CrearPerfilBarberoDtoValidator.cs
+  - [x] CrearReservaDtoValidator.cs
+  - [x] CrearSolicitudAfiliacionDtoValidator.cs
+  - [x] CrearNotificacionDtoValidator.cs
 
 ## Backend - Fase 7: Controllers
 - [ ] Controladores API
