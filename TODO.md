@@ -27,27 +27,27 @@
 - [x] API.Data/Entidades/Multibarbero/EstadisticaProducto.cs
 
 ## Backend - Fase 2: Configuraciones BD
-- [ ] API.Data/ConfiguracionEntidades/Multibarbero/PlanSuscripcionConfiguracionBD.cs
-- [ ] API.Data/ConfiguracionEntidades/Multibarbero/PerfilBarberoConfiguracionBD.cs
-- [ ] API.Data/ConfiguracionEntidades/Multibarbero/PerfilBarberiaConfiguracionBD.cs
-- [ ] API.Data/ConfiguracionEntidades/Multibarbero/ReservaConfiguracionBD.cs
-- [ ] API.Data/ConfiguracionEntidades/Multibarbero/SolicitudAfiliacionConfiguracionBD.cs
-- [ ] API.Data/ConfiguracionEntidades/Multibarbero/AfiliacionBarberoConfiguracionBD.cs
-- [ ] API.Data/ConfiguracionEntidades/Multibarbero/NotificacionConfiguracionBD.cs
-- [ ] API.Data/ConfiguracionEntidades/Multibarbero/ServicioConfiguracionBD.cs
-- [ ] API.Data/ConfiguracionEntidades/Multibarbero/ProductoConfiguracionBD.cs
+- [x] API.Data/ConfiguracionEntidades/Multibarbero/PlanSuscripcionConfiguracionBD.cs
+- [x] API.Data/ConfiguracionEntidades/Multibarbero/PerfilBarberoConfiguracionBD.cs
+- [x] API.Data/ConfiguracionEntidades/Multibarbero/PerfilBarberiaConfiguracionBD.cs
+- [x] API.Data/ConfiguracionEntidades/Multibarbero/ReservaConfiguracionBD.cs
+- [x] API.Data/ConfiguracionEntidades/Multibarbero/SolicitudAfiliacionConfiguracionBD.cs
+- [x] API.Data/ConfiguracionEntidades/Multibarbero/AfiliacionBarberoConfiguracionBD.cs
+- [x] API.Data/ConfiguracionEntidades/Multibarbero/NotificacionConfiguracionBD.cs
+- [x] API.Data/ConfiguracionEntidades/Multibarbero/ServicioConfiguracionBD.cs
+- [x] API.Data/ConfiguracionEntidades/Multibarbero/ProductoConfiguracionBD.cs
 
 ## Backend - Fase 3: Repositorios
-- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IPlanSuscripcionRepository.cs
-- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IPerfilBarberoRepository.cs
-- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IReservaRepository.cs
-- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/ISolicitudAfiliacionRepository.cs
-- [ ] API.Data/IUnitOfWorks/Interfaces/Multibarbero/INotificacionRepository.cs
-- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/PlanSuscripcionRepository.cs
-- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/PerfilBarberoRepository.cs
-- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/ReservaRepository.cs
-- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/SolicitudAfiliacionRepository.cs
-- [ ] API.Data/IUnitOfWorks/Repositorios/Multibarbero/NotificacionRepository.cs
+- [x] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IPlanSuscripcionRepository.cs
+- [x] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IPerfilBarberoRepository.cs
+- [x] API.Data/IUnitOfWorks/Interfaces/Multibarbero/IReservaRepository.cs
+- [x] API.Data/IUnitOfWorks/Interfaces/Multibarbero/ISolicitudAfiliacionRepository.cs
+- [x] API.Data/IUnitOfWorks/Interfaces/Multibarbero/INotificacionRepository.cs
+- [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/PlanSuscripcionRepository.cs
+- [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/PerfilBarberoRepository.cs
+- [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/ReservaRepository.cs
+- [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/SolicitudAfiliacionRepository.cs
+- [x] API.Data/IUnitOfWorks/Repositorios/Multibarbero/NotificacionRepository.cs
 
 ## Backend - Fase 4: Servicios Dominio
 - [ ] API.Domain/Interfaces/Multibarbero/IPlanSuscripcionService.cs
