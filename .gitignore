@@ -1,42 +1,70 @@
 ```
 # Build artifacts
-bin/
-obj/
-*.dll
+*.obj
 *.exe
+*.dll
+*.so
+*.a
+*.lib
 *.pdb
-*.config
-*.csproj.user
+*.ilk
+*.exp
+*.iobj
+*.ipdb
+*.tlog
+*.log
+*.tmp
 
 # Dependencies
 packages/
-node_modules/
-lib/
-
-# Logs
-*.log
+bin/
+obj/
+out/
 
 # Environment
 .env
 .env.local
 *.env.*
 
-# Editors
-.vscode/
-.idea/
-*.swp
-*.swo
-
 # OS generated files
 .DS_Store
 Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
 
-# Test coverage
-coverage/
-htmlcov/
-*.coverage
+# Visual Studio
+*.user
+*.userosscache
+*.suo
+*.csproj.user
+*.vbproj.user
+*.vcxproj.user
+.vs/
+.vscode/
 
 # Temporary files
 *.tmp
-temp/
+*.temp
+*.bak
+*.cache
+*.cachedb
+*.lock
+*.lockb
+
+# Output
+Debug/
+Release/
+x64/
+x86/
+build/
+dist/
+publish/
+
+# Logs
+*.log
+
+# User-specific files
+*.userprefs
+*.local
 ```
