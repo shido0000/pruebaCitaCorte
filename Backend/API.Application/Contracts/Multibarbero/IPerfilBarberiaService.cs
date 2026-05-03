@@ -1,7 +1,5 @@
-using API.Application.Dtos.Multibarbero;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using API.Application.Dtos.Multibarbero.PerfilBarberia;
+using API.Application.Dtos.Multibarbero.PerfilBarbero;
 
 namespace API.Application.Contracts.Multibarbero;
 

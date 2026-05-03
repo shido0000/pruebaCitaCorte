@@ -1,5 +1,3 @@
-using System;
-
 namespace API.Application.Dtos.Multibarbero
 {
     public class ServicioDto

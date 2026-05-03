@@ -75,6 +75,6 @@ namespace API.Domain.Services.Seguridad
         public async Task<Usuario?> ObtenerPorUsername(string username, Func<IQueryable<Usuario>, IIncludableQueryable<Usuario, object>>? propiedadesIncluidas = null) => await _repositorios.BasicRepository.FirstAsync(entity => entity.Username == username, propiedadesIncluidas);
 
         public async Task<List<Permiso>> ObtenerPermisos(string username)
-            => (await _repositorios.Usuarios.FirstAsync(e => e.Username == username, query=> query.Include(e=>e.Rol.RolPermiso).ThenInclude(e=>e.Permiso)))?.Rol.RolPermiso.Select(e => e.Permiso).ToList() ?? new();
+            => (await _repositorios.Usuarios.FirstAsync(e => e.Username == username, query => query.Include(e => e.Rol.RolPermiso).ThenInclude(e => e.Permiso)))?.Rol.RolPermiso.Select(e => e.Permiso).ToList() ?? new();
     }
 }

@@ -1,11 +1,6 @@
-using API.Application.Contracts.Multibarbero;
-using API.Application.Contracts.Security;
-using API.Domain.Entities.Multibarbero;
-using API.Domain.Interfaces.Repositories.Multibarbero;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using API.Data.Entidades.Multibarbero;
+using API.Data.IUnitOfWorks.Interfaces.Multibarbero;
+using API.Domain.Interfaces.Seguridad;
 
 namespace API.Application.Services.Multibarbero
 {
@@ -17,7 +12,7 @@ namespace API.Application.Services.Multibarbero
         public ServicioService(
             IServicioRepository servicioRepository,
             IPerfilBarberiaRepository perfilBarberiaRepository,
-            IUsuarioService usuarioService) 
+            IUsuarioService usuarioService)
             : base(servicioRepository, usuarioService)
         {
             _servicioRepository = servicioRepository;
@@ -48,7 +43,7 @@ namespace API.Application.Services.Multibarbero
         public async Task<IEnumerable<Servicio>> ObtenerPorBarberiaAsync(Guid idBarberia)
         {
             var usuarioActual = await ObtenerUsuarioActualAsync();
-            
+
             if (!usuarioActual.EsRol("Comercial"))
             {
                 var perfilBarberia = await _perfilBarberiaRepository.ObtenerPorBarberoYBarberiaAsync(usuarioActual.Id, idBarberia);
@@ -62,7 +57,7 @@ namespace API.Application.Services.Multibarbero
         public async Task<IEnumerable<Servicio>> ObtenerPorCategoriaAsync(Guid idCategoria)
         {
             var usuarioActual = await ObtenerUsuarioActualAsync();
-            
+
             if (usuarioActual.EsRol("Comercial"))
             {
                 return await _servicioRepository.ObtenerPorCategoriaAsync(idCategoria);
@@ -89,7 +84,7 @@ namespace API.Application.Services.Multibarbero
         public override async Task<Servicio> CrearAsync(Servicio entidad)
         {
             var usuarioActual = await ObtenerUsuarioActualAsync();
-            
+
             if (!usuarioActual.EsRol("Barbero") && !usuarioActual.EsRol("Comercial"))
                 throw new UnauthorizedAccessException("No tiene permisos para crear servicios");
 
@@ -103,7 +98,7 @@ namespace API.Application.Services.Multibarbero
         public override async Task<Servicio> ActualizarAsync(Servicio entidad)
         {
             var usuarioActual = await ObtenerUsuarioActualAsync();
-            
+
             if (!usuarioActual.EsRol("Barbero") && !usuarioActual.EsRol("Comercial"))
                 throw new UnauthorizedAccessException("No tiene permisos para actualizar servicios");
 
@@ -123,7 +118,7 @@ namespace API.Application.Services.Multibarbero
         public override async Task EliminarAsync(Guid id)
         {
             var usuarioActual = await ObtenerUsuarioActualAsync();
-            
+
             if (!usuarioActual.EsRol("Barbero") && !usuarioActual.EsRol("Comercial"))
                 throw new UnauthorizedAccessException("No tiene permisos para eliminar servicios");
 

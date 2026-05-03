@@ -16,9 +16,9 @@ namespace API.Data.ConfiguracionEntidades.Nomencladores
             modelBuilder.Entity<Categoria>().Property(e => e.Reservado).IsRequired().HasDefaultValue(true);
             modelBuilder.Entity<Categoria>().Property(e => e.Activo).IsRequired().HasDefaultValue(true);
 
-            modelBuilder.Entity<Categoria>().HasIndex(e => new { e.Codigo}).IsUnique();
-          
-     
+            modelBuilder.Entity<Categoria>().HasIndex(e => new { e.Codigo }).IsUnique();
+
+
         }
     }
 }

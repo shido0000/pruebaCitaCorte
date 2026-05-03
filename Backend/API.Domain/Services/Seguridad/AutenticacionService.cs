@@ -1,5 +1,4 @@
 ﻿using API.Data.Entidades.Seguridad;
-using API.Data.IUnitOfWorks.Interfaces;
 using API.Domain.Exceptions;
 using API.Domain.Interfaces.Seguridad;
 using Microsoft.AspNetCore.Http;
@@ -28,10 +27,10 @@ namespace API.Domain.Services.Seguridad
         {
             Usuario usuario = await _usuarioService.ObtenerPorUsername(username) ??
                 throw new CustomException { Status = StatusCodes.Status401Unauthorized, Message = "Usuario o contraseña no válido." };
-          
-            if(usuario.DebeCambiarContrasenna)
+
+            if (usuario.DebeCambiarContrasenna)
                 throw new CustomException { Status = StatusCodes.Status307TemporaryRedirect, Message = "El usuario debe cambiar la contraseña." };
-          
+
             return Crypto.VerifyHashedPassword(usuario.Contrasenna, contrasenna);
         }
 

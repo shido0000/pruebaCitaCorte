@@ -1,7 +1,6 @@
 using API.Application.Contracts.Multibarbero;
-using API.Data.Entidades.Multibarbero;
+using API.Data.Enum.Multibarbero;
 using API.Data.IUnitOfWorks.Interfaces.Multibarbero;
-using Microsoft.Extensions.Logging;
 
 namespace API.Application.Services.Multibarbero
 {
@@ -27,14 +26,14 @@ namespace API.Application.Services.Multibarbero
         /// </summary>
         public async Task<bool> ExisteSolapamientoAsync(Guid proveedorId, DateTime fechaInicio, DateTime fechaFin, Guid? reservaExcluirId = null)
         {
-            _logger.LogInformation("Validando solapamiento para proveedor {ProveedorId} desde {Inicio} hasta {Fin}", 
+            _logger.LogInformation("Validando solapamiento para proveedor {ProveedorId} desde {Inicio} hasta {Fin}",
                 proveedorId, fechaInicio, fechaFin);
 
             // Obtener todas las reservas activas del proveedor en el rango de fechas
             var reservas = await _reservaRepository.ObtenerTodosAsync();
-            
+
             // Filtrar reservas del mismo proveedor que estén activas y no sean la que se está excluyendo
-            var reservasConflicto = reservas.Where(r => 
+            var reservasConflicto = reservas.Where(r =>
                 r.ProveedorId == proveedorId &&
                 r.Estado != EstadoReserva.Cancelada &&
                 r.Estado != EstadoReserva.Finalizada &&
@@ -44,7 +43,7 @@ namespace API.Application.Services.Multibarbero
 
             if (reservasConflicto.Any())
             {
-                _logger.LogWarning("Se encontraron {Count} reservas con solapamiento para el proveedor {ProveedorId}", 
+                _logger.LogWarning("Se encontraron {Count} reservas con solapamiento para el proveedor {ProveedorId}",
                     reservasConflicto.Count, proveedorId);
                 return true;
             }
@@ -86,12 +85,12 @@ namespace API.Application.Services.Multibarbero
         /// </summary>
         public async Task<List<DateTime>> ObtenerHorariosDisponiblesAsync(Guid proveedorId, DateTime fecha, int duracionServicio)
         {
-            _logger.LogInformation("Obteniendo horarios disponibles para proveedor {ProveedorId} en fecha {Fecha}", 
+            _logger.LogInformation("Obteniendo horarios disponibles para proveedor {ProveedorId} en fecha {Fecha}",
                 proveedorId, fecha.Date);
 
             // Obtener todas las reservas del proveedor para esa fecha
             var reservas = await _reservaRepository.ObtenerTodosAsync();
-            var reservasDelDia = reservas.Where(r => 
+            var reservasDelDia = reservas.Where(r =>
                 r.ProveedorId == proveedorId &&
                 r.FechaInicio.Date == fecha.Date &&
                 r.Estado != EstadoReserva.Cancelada &&
@@ -109,9 +108,9 @@ namespace API.Application.Services.Multibarbero
             while (tiempoActual.AddMinutes(duracionServicio) <= horaFinJornada)
             {
                 var finSlot = tiempoActual.AddMinutes(duracionServicio);
-                
+
                 // Verificar si este slot se solapa con alguna reserva existente
-                bool hayConflicto = reservasDelDia.Any(r => 
+                bool hayConflicto = reservasDelDia.Any(r =>
                     HaySolapamiento(tiempoActual, finSlot, r.FechaInicio, r.FechaFin)
                 );
 

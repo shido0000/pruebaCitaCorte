@@ -1,5 +1,5 @@
-using Hangfire;
 using API.Domain.Interfaces.Multibarbero;
+using Hangfire;
 using Microsoft.Extensions.Logging;
 
 namespace API.Domain.Jobs;
@@ -28,19 +28,19 @@ public class RecordatorioReservasPendientesJob
     public async Task Ejecutar()
     {
         _logger.LogInformation("Iniciando job: RecordatorioReservasPendientes");
-        
+
         try
         {
             // Obtener reservas pendientes por más de 1 hora
             var reservasPendientes = await _reservaService.ObtenerPendientesPorTiempo(TimeSpan.FromHours(1));
-            
+
             foreach (var reserva in reservasPendientes)
             {
                 // Notificar al proveedor (barbero o barbería)
-                var usuarioProveedorId = reserva.ProveedorTipo == Data.Enum.Multibarbero.TipoProveedor.Barbero 
-                    ? reserva.ProveedorBarbero.UsuarioId 
+                var usuarioProveedorId = reserva.ProveedorTipo == Data.Enum.Multibarbero.TipoProveedor.Barbero
+                    ? reserva.ProveedorBarbero.UsuarioId
                     : reserva.ProveedorBarberia.UsuarioId;
-                
+
                 await _notificacionService.CrearNotificacion(
                     usuarioProveedorId,
                     Data.Enum.Multibarbero.TipoNotificacion.ReservaNueva,
@@ -51,10 +51,10 @@ public class RecordatorioReservasPendientesJob
                     accionRequerida: true,
                     urlAccion: $"/reservas/detalles/{reserva.Id}"
                 );
-                
+
                 _logger.LogInformation($"Recordatorio enviado para reserva pendiente #{reserva.Id}");
             }
-            
+
             _logger.LogInformation($"Job completado. Recordatorios enviados: {reservasPendientes.Count}");
         }
         catch (Exception ex)

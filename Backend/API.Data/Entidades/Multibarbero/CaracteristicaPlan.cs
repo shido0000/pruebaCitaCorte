@@ -1,6 +1,3 @@
-using API.Data.Entidades;
-using API.Data.Entidades.Multibarbero;
-
 namespace API.Data.Entidades.Multibarbero
 {
     /// <summary>

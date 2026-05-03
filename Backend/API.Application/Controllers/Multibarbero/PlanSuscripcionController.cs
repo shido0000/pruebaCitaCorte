@@ -1,8 +1,10 @@
+using API.Application.Dtos.Comunes;
 using API.Application.Dtos.Multibarbero.PlanSuscripcion;
 using API.Data.Entidades.Multibarbero;
 using API.Domain.Interfaces.Multibarbero;
 using API.Domain.Validators.Multibarbero;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq.Expressions;
 
 namespace API.Application.Controllers.Multibarbero
@@ -19,10 +21,10 @@ namespace API.Application.Controllers.Multibarbero
         protected override Task<(IEnumerable<PlanSuscripcion>, int)> AplicarFiltrosIncluirPropiedades(FiltrarConfigurarListadoPaginadoPlanSuscripcionInputDto inputDto)
         {
             List<Expression<Func<PlanSuscripcion, bool>>> filtros = new();
-            
+
             if (!string.IsNullOrEmpty(inputDto.TextoBuscar))
             {
-                filtros.Add(p => p.Nombre.Contains(inputDto.TextoBuscar) || 
+                filtros.Add(p => p.Nombre.Contains(inputDto.TextoBuscar) ||
                                  p.Descripcion.Contains(inputDto.TextoBuscar));
             }
 
@@ -33,7 +35,7 @@ namespace API.Application.Controllers.Multibarbero
         public async Task<IActionResult> ObtenerPlanesActivos([FromQuery] API.Data.Enum.Multibarbero.TipoPlan? tipo = null)
         {
             _servicioBase.ValidarPermisos("listar, gestionar");
-            
+
             var planes = await _planSuscripcionService.ObtenerPlanesActivos(tipo);
             var planesDto = _mapper.Map<IEnumerable<DetallesPlanSuscripcionDto>>(planes);
 
@@ -44,9 +46,9 @@ namespace API.Application.Controllers.Multibarbero
         public async Task<IActionResult> ObtenerPlanPorId(Guid id, [FromQuery] bool incluirCaracteristicas = false)
         {
             _servicioBase.ValidarPermisos("listar, gestionar");
-            
+
             var plan = await _planSuscripcionService.ObtenerPlanPorId(id, incluirCaracteristicas);
-            
+
             if (plan == null)
                 return NotFound(new ResponseDto { Status = StatusCodes.Status404NotFound, ErrorMessage = "Plan no encontrado" });
 

@@ -10,6 +10,6 @@ namespace API.Application.Dtos.Nomencladores.Grupo
         public new bool Reservado { get; set; }
         [JsonIgnore]
         public new bool Activo { get; set; }
-      
+
     }
 }

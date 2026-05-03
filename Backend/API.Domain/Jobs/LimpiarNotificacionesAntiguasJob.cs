@@ -1,5 +1,5 @@
-using Hangfire;
 using API.Data.Entidades.Multibarbero;
+using Hangfire;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -26,21 +26,21 @@ public class LimpiarNotificacionesAntiguasJob
     public async Task Ejecutar()
     {
         _logger.LogInformation("Iniciando job: LimpiarNotificacionesAntiguas");
-        
+
         try
         {
             var fechaCorte = DateTime.UtcNow.AddDays(-30);
-            
+
             // Eliminar notificaciones antiguas
             var notificacionesAntiguas = await _dbContext.Set<Notificacion>()
                 .Where(n => n.FechaCreacion < fechaCorte)
                 .ToListAsync();
-            
+
             if (notificacionesAntiguas.Any())
             {
                 _dbContext.Set<Notificacion>().RemoveRange(notificacionesAntiguas);
                 await _dbContext.SaveChangesAsync();
-                
+
                 _logger.LogInformation($"Notificaciones antiguas eliminadas: {notificacionesAntiguas.Count}");
             }
             else

@@ -1,5 +1,4 @@
-﻿using API.Application.Dtos.Nomencladores.Familia;
-using API.Application.Dtos.Nomencladores.Grupo;
+﻿using API.Application.Dtos.Nomencladores.Grupo;
 using API.Data.Entidades.Nomencladores;
 
 namespace API.Application.Mapper.Nomencladores
@@ -24,7 +23,7 @@ namespace API.Application.Mapper.Nomencladores
             .ForMember(dto => dto.OrigenDescripcion, opt => opt.MapFrom(e => e.Origen.Descripcion));
         }
 
-        
+
     }
 }
 

@@ -10,7 +10,7 @@ namespace API.Domain.Services.Multibarbero
 {
     public class ReservaService : BasicService<Reserva, ReservaValidator>, IReservaService
     {
-        public ReservaService(IUnitOfWork<Reserva> repositorios, IHttpContextAccessor httpContext) 
+        public ReservaService(IUnitOfWork<Reserva> repositorios, IHttpContextAccessor httpContext)
             : base(repositorios, httpContext)
         {
         }

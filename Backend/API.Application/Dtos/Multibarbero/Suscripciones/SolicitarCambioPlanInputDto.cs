@@ -9,17 +9,17 @@ namespace API.Application.Dtos.Multibarbero.Suscripciones
         /// ID del perfil (Barbero o Barbería)
         /// </summary>
         public Guid PerfilId { get; set; }
-        
+
         /// <summary>
         /// Tipo de perfil (Barbero o Barbería)
         /// </summary>
         public string TipoPerfil { get; set; } = string.Empty; // "Barbero" o "Barberia"
-        
+
         /// <summary>
         /// ID del nuevo plan solicitado
         /// </summary>
         public Guid NuevoPlanId { get; set; }
-        
+
         /// <summary>
         /// Motivo o comentario opcional de la solicitud
         /// </summary>

@@ -1,6 +1,5 @@
-using System.ComponentModel.DataAnnotations.Schema;
-using API.Data.Entidades.Multibarbero;
 using API.Data.Enum.Multibarbero;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.Data.Entidades.Multibarbero
 {

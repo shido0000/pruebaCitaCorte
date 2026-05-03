@@ -1,5 +1,5 @@
-using FluentValidation;
 using API.Application.Dtos.Multibarbero.PerfilBarberia;
+using FluentValidation;
 
 namespace API.Application.Validators.Multibarbero.PerfilBarberia
 {
@@ -47,7 +47,7 @@ namespace API.Application.Validators.Multibarbero.PerfilBarberia
 
             // Validar Coordenadas (opcionales, pero si una existe, la otra también)
             RuleFor(x => x.Longitud)
-                .Must((modelo, longitud) => 
+                .Must((modelo, longitud) =>
                 {
                     if (!modelo.Latitud.HasValue && !longitud.HasValue)
                         return true;
@@ -64,7 +64,7 @@ namespace API.Application.Validators.Multibarbero.PerfilBarberia
 
             // Validar Horarios
             RuleFor(x => x.HorarioCierre)
-                .Must((modelo, cierre) => 
+                .Must((modelo, cierre) =>
                 {
                     if (!modelo.HorarioApertura.HasValue && !cierre.HasValue)
                         return true;

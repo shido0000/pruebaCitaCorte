@@ -9,7 +9,7 @@ namespace API.Domain.Services.Multibarbero
 {
     public class PerfilBarberoService : BasicService<PerfilBarbero, PerfilBarberoValidator>, IPerfilBarberoService
     {
-        public PerfilBarberoService(IUnitOfWork<PerfilBarbero> repositorios, IHttpContextAccessor httpContext) 
+        public PerfilBarberoService(IUnitOfWork<PerfilBarbero> repositorios, IHttpContextAccessor httpContext)
             : base(repositorios, httpContext)
         {
         }

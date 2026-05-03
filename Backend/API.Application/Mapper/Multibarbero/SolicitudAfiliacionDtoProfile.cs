@@ -1,6 +1,5 @@
-using AutoMapper;
-using API.Application.Dtos.Multibarbero;
 using API.Data.Entidades.Multibarbero;
+using AutoMapper;
 
 namespace API.Application.Mapper.Multibarbero;
 
@@ -14,11 +13,11 @@ public class SolicitudAfiliacionDtoProfile : Profile
             .ForMember(dest => dest.NombreBarberia, opt => opt.MapFrom(src => src.Barberia.Usuario.NombreComercial))
             .ForMember(dest => dest.EstadoTexto, opt => opt.MapFrom(src => src.Estado.ToString()))
             .ForMember(dest => dest.RespondidoPorNombre, opt => opt.MapFrom(src => src.RespondidoPor != null ? src.RespondidoPor.Usuario.Nombre : null));
-        
+
         // DTO a Entidad (para actualizaciones)
         CreateMap<ActualizarSolicitudAfiliacionInputDto, SolicitudAfiliacion>()
             .ForMember(dest => dest.Id, opt => opt.Ignore());
-        
+
         // Crear InputDto a Entidad
         CreateMap<CrearSolicitudAfiliacionInputDto, SolicitudAfiliacion>()
             .ForMember(dest => dest.Id, opt => opt.Ignore())

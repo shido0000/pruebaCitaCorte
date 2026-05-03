@@ -1,5 +1,4 @@
 using API.Data.Enum.Multibarbero;
-using API.Data.Entidades;
 
 namespace API.Data.Entidades.Multibarbero
 {

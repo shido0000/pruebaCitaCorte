@@ -18,7 +18,7 @@ public static class MultibarberoSeeder
         }
 
         // ==================== PLANES PARA BARBEROS ====================
-        
+
         var planFreeBarbero = new PlanSuscripcion
         {
             Id = Guid.NewGuid(),
@@ -103,7 +103,7 @@ public static class MultibarberoSeeder
         };
 
         // ==================== PLANES PARA BARBERÍAS ====================
-        
+
         var planBasicoBarberia = new PlanSuscripcion
         {
             Id = Guid.NewGuid(),
@@ -198,7 +198,7 @@ public static class MultibarberoSeeder
         );
 
         // ==================== CATEGORÍAS DE SERVICIOS ====================
-        
+
         var categoriasServicio = new List<CategoriaServicio>
         {
             new() { Id = Guid.NewGuid(), Nombre = "Corte de Cabello", Descripcion = "Cortes y estilos de cabello", IconoUrl = "/icons/corte.svg" },
@@ -208,11 +208,11 @@ public static class MultibarberoSeeder
             new() { Id = Guid.NewGuid(), Nombre = "Peinado", Descripcion = "Peinados y estilismo", IconoUrl = "/icons/peinado.svg" },
             new() { Id = Guid.NewGuid(), Nombre = "Rasurado", Descripcion = "Rasurado tradicional y moderno", IconoUrl = "/icons/rasurado.svg" }
         };
-        
+
         await context.Set<CategoriaServicio>().AddRangeAsync(categoriasServicio);
 
         // ==================== CATEGORÍAS DE PRODUCTOS ====================
-        
+
         var categoriasProducto = new List<CategoriaProducto>
         {
             new() { Id = Guid.NewGuid(), Nombre = "Ceras y Pomadas", Descripcion = "Productos para estilizar cabello" },
@@ -221,7 +221,7 @@ public static class MultibarberoSeeder
             new() { Id = Guid.NewGuid(), Nombre = "Herramientas", Descripcion = "Peines, tijeras y accesorios" },
             new() { Id = Guid.NewGuid(), Nombre = "Aftershaves", Descripcion = "Productos post-rasurado" }
         };
-        
+
         await context.Set<CategoriaProducto>().AddRangeAsync(categoriasProducto);
 
         // Guardar cambios

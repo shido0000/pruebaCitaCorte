@@ -1,6 +1,4 @@
-﻿using API.Data.Entidades;
-
-namespace API.Data.Entidades.Seguridad
+﻿namespace API.Data.Entidades.Seguridad
 {
     /// <summary>
     /// Tabla que guarda datos de los usuarios del sistema

@@ -2,6 +2,6 @@
 {
     public class ActualizarCategoriaInputDto : CategoriaDto
     {
-        
+
     }
 }

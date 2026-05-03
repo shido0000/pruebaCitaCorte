@@ -1,7 +1,4 @@
 using API.Data.Entidades.Multibarbero;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace API.Data.IUnitOfWorks.Interfaces.Multibarbero
 {

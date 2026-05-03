@@ -1,5 +1,4 @@
-﻿using API.Data.Entidades.Seguridad;
-using API.Data.Enum.Nomencladores;
+﻿using API.Data.Enum.Nomencladores;
 
 namespace API.Data.Entidades.Nomencladores
 {

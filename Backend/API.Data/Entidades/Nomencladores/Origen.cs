@@ -9,7 +9,7 @@
 
         public required string Descripcion { get; set; }
         public required char Tipo { get; set; }
- 
+
         public bool Reservado { get; set; } = false;
         public required bool Activo { get; set; } = true;
 

@@ -1,5 +1,6 @@
 using API.Data.Entidades.Multibarbero;
 using API.Data.IUnitOfWorks.Interfaces;
+using API.Domain.Exceptions;
 using API.Domain.Interfaces.Multibarbero;
 using API.Domain.Validators.Multibarbero;
 using Microsoft.AspNetCore.Http;
@@ -26,7 +27,7 @@ namespace API.Domain.Services.Multibarbero
 
             return await query
                 .Include(n => n.UsuarioDestino)
-                .OrderByDescending(n => n.FechaCreacion)
+                .OrderByDescending(n => n.FechaCreado)
                 .ToListAsync();
         }
 
@@ -69,7 +70,7 @@ namespace API.Domain.Services.Multibarbero
 
         public async Task<Notificacion> CrearNotificacion(Notificacion notificacion)
         {
-            notificacion.FechaCreacion = DateTime.Now;
+            notificacion.FechaCreado = DateTime.Now;
             notificacion.Leida = false;
 
             await Crear(notificacion);

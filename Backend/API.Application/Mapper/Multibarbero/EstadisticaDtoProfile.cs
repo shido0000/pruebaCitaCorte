@@ -1,6 +1,5 @@
-using AutoMapper;
 using API.Application.Dtos.Multibarbero.Estadisticas;
-using API.Data.Entidades.Multibarbero;
+using AutoMapper;
 
 namespace API.Application.Mapper.Multibarbero
 {

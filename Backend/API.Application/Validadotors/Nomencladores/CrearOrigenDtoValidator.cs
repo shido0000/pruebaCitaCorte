@@ -8,9 +8,9 @@ namespace API.Application.Validadotors.Nomencladores
 
         public CrearOrigenDtoValidator()
         {
-          /*  RuleFor(m => m.PermisoIds).NotEmpty().WithMessage("No puede ser una lista vacia.")
-                                      .NotNull().WithMessage("Es un campo obligatorio.");
-          */
+            /*  RuleFor(m => m.PermisoIds).NotEmpty().WithMessage("No puede ser una lista vacia.")
+                                        .NotNull().WithMessage("Es un campo obligatorio.");
+            */
         }
     }
 }

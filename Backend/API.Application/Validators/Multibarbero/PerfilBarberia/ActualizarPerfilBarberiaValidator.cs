@@ -1,5 +1,5 @@
-using FluentValidation;
 using API.Application.Dtos.Multibarbero.PerfilBarberia;
+using FluentValidation;
 
 namespace API.Application.Validators.Multibarbero.PerfilBarberia
 {
@@ -56,7 +56,7 @@ namespace API.Application.Validators.Multibarbero.PerfilBarberia
 
             // Validar Horarios (opcionales)
             RuleFor(x => x.HorarioCierre)
-                .Must((modelo, cierre) => 
+                .Must((modelo, cierre) =>
                 {
                     if (!modelo.HorarioApertura.HasValue && !cierre.HasValue)
                         return true;

@@ -1,5 +1,3 @@
-using API.Application.Dtos.Multibarbero.CategoriaProducto;
-
 namespace API.Application.Dtos.Multibarbero.CategoriaProducto;
 
 public class CategoriaProductoListadoPaginadoDto

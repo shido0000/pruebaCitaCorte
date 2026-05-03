@@ -2,8 +2,7 @@ using API.Application.Contracts.Multibarbero;
 using API.Application.Dtos.Multibarbero.Afiliaciones;
 using API.Data.Entidades.Multibarbero;
 using API.Data.Enum.Multibarbero;
-using API.Domain.Interfaces.Repositories.Multibarbero;
-using Microsoft.EntityFrameworkCore;
+using API.Data.IUnitOfWorks.Interfaces.Multibarbero;
 
 namespace API.Application.Services.Multibarbero
 {
@@ -51,7 +50,7 @@ namespace API.Application.Services.Multibarbero
             };
 
             await _solicitudRepository.CrearAsync(solicitud);
-            
+
             return new SolicitudAfiliacionDto
             {
                 Id = solicitud.Id,

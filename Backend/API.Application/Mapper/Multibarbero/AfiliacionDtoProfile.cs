@@ -1,6 +1,6 @@
-using AutoMapper;
 using API.Application.Dtos.Multibarbero.Afiliaciones;
 using API.Data.Entidades.Multibarbero;
+using AutoMapper;
 
 namespace API.Application.Mapper.Multibarbero
 {

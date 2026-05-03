@@ -222,7 +222,7 @@ namespace API.Application.IoC
             services.AddScoped<IPerfilBarberiaService, PerfilBarberiaService>();
             services.AddScoped<IProductoService, ProductoService>();
             services.AddScoped<IEstadisticaService, EstadisticaService>();
-            
+
             // Servicios de Validación y Gestión Multibarbero
             services.AddScoped<IReservaValidacionService, ReservaValidacionService>();
             services.AddScoped<ISuscripcionService, SuscripcionService>();

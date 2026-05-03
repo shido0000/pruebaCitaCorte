@@ -1,5 +1,7 @@
-﻿using API.Data.ConfiguracionEntidades.Nomencladores;
+﻿using API.Data.ConfiguracionEntidades.Multibarbero;
+using API.Data.ConfiguracionEntidades.Nomencladores;
 using API.Data.ConfiguracionEntidades.Seguridad;
+using API.Data.Entidades.Multibarbero;
 using API.Data.Entidades.Nomencladores;
 using API.Data.Entidades.Seguridad;
 using Microsoft.EntityFrameworkCore;

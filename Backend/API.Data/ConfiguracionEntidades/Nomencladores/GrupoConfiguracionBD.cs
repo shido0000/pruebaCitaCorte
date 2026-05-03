@@ -1,5 +1,4 @@
 ﻿using API.Data.Entidades.Nomencladores;
-using API.Data.Entidades.Seguridad;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data.ConfiguracionEntidades.Nomencladores
@@ -18,10 +17,10 @@ namespace API.Data.ConfiguracionEntidades.Nomencladores
             modelBuilder.Entity<Grupo>().Property(e => e.Activo).IsRequired().HasDefaultValue(true);
             modelBuilder.Entity<Grupo>().Property(e => e.Desgaste).HasPrecision(5, 2);
 
-            modelBuilder.Entity<Grupo>().HasIndex(e => new { e.Codigo}).IsUnique();
+            modelBuilder.Entity<Grupo>().HasIndex(e => new { e.Codigo }).IsUnique();
 
             modelBuilder.Entity<Grupo>().HasOne(e => e.Origen).WithMany(e => e.Grupos).HasForeignKey(e => e.OrigenId).OnDelete(DeleteBehavior.Restrict);
-         
+
         }
     }
 }

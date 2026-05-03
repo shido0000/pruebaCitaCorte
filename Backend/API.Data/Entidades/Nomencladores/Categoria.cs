@@ -1,5 +1,4 @@
-﻿using API.Data.Entidades.Seguridad;
-using API.Data.Enum.Nomencladores;
+﻿using API.Data.Enum.Nomencladores;
 
 namespace API.Data.Entidades.Nomencladores
 {
@@ -12,7 +11,7 @@ namespace API.Data.Entidades.Nomencladores
 
         public required string Descripcion { get; set; }
         public required TipoDeCodigo TipoDeCodigo { get; set; }
- 
+
         public required bool Reservado { get; set; } = true;
         public required bool Activo { get; set; } = true;
 

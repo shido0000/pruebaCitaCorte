@@ -1,7 +1,5 @@
 ﻿using API.Application.Dtos.Nomencladores.Categoria;
-using API.Application.Dtos.Seguridad.Usuario;
 using API.Data.Entidades.Nomencladores;
-using API.Data.Entidades.Seguridad;
 using API.Domain.Interfaces.Nomencladores;
 using API.Domain.Validators.Nomencladores;
 using AutoMapper;

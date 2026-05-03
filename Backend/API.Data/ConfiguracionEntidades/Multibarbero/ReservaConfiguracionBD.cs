@@ -1,6 +1,5 @@
 using API.Data.Entidades.Multibarbero;
 using Microsoft.EntityFrameworkCore;
-using API.Data.ConfiguracionEntidades;
 
 namespace API.Data.ConfiguracionEntidades.Multibarbero
 {

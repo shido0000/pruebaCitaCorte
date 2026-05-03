@@ -41,7 +41,7 @@ namespace API.Application.Controllers.Nomencladores
             return await _servicioBase.ObtenerPorId(id, propiedadesIncluidas: query => query.Include(e => e.Origen));
         }
 
-        
+
 
     }
 }

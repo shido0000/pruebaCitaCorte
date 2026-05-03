@@ -1,8 +1,4 @@
-using API.Application.Contracts.Multibarbero;
-using API.Domain.Entities.Multibarbero;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using API.Data.Entidades.Multibarbero;
 
 namespace API.Application.Services.Multibarbero
 {

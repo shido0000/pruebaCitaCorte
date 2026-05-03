@@ -25,7 +25,7 @@ namespace API.Domain.Validators.Nomencladores
 
             RuleFor(m => m.Descripcion).NotEmpty().WithMessage("No puede ser un texto vacio.")
                                      .MaximumLength(50).WithMessage("Debe tener {MaxLength} caracteres máximo.")
-                                     .NotNull().WithMessage("Es un campo obligatorio.");                                  
+                                     .NotNull().WithMessage("Es un campo obligatorio.");
 
 
             RuleFor(m => m).MustAsync(async (familia, cancelacion) => await _repositorios.Familias.AnyAsync(e => e.Id != familia.Id && e.Codigo == familia.Codigo))

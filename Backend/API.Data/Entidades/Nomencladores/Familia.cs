@@ -1,6 +1,4 @@
-﻿using API.Data.Enum.Nomencladores;
-
-namespace API.Data.Entidades.Nomencladores
+﻿namespace API.Data.Entidades.Nomencladores
 {
     /// <summary>
     /// Tabla que guarda datos de las Familias
@@ -12,7 +10,7 @@ namespace API.Data.Entidades.Nomencladores
         public required string Codigo { get => codigo.PadLeft(2, '0'); set => codigo = value; }
 
         public required string Descripcion { get; set; }
-      
+
         public required bool Reservado { get; set; }
         public required bool Activo { get; set; } = true;
 

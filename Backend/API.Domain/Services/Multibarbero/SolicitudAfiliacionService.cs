@@ -10,7 +10,7 @@ namespace API.Domain.Services.Multibarbero
 {
     public class SolicitudAfiliacionService : BasicService<SolicitudAfiliacion, SolicitudAfiliacionValidator>, ISolicitudAfiliacionService
     {
-        public SolicitudAfiliacionService(IUnitOfWork<SolicitudAfiliacion> repositorios, IHttpContextAccessor httpContext) 
+        public SolicitudAfiliacionService(IUnitOfWork<SolicitudAfiliacion> repositorios, IHttpContextAccessor httpContext)
             : base(repositorios, httpContext)
         {
         }

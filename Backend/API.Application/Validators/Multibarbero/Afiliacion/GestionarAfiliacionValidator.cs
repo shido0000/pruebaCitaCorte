@@ -1,5 +1,5 @@
-using FluentValidation;
 using API.Application.Dtos.Multibarbero.Afiliaciones;
+using FluentValidation;
 
 namespace API.Application.Validators.Multibarbero.Afiliacion
 {

@@ -1,9 +1,9 @@
 using API.Data.Entidades.Multibarbero;
 using API.Data.IUnitOfWorks.Interfaces;
+using API.Data.IUnitOfWorks.Interfaces.Multibarbero;
 using API.Domain.Exceptions;
 using API.Domain.Interfaces.Multibarbero;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Domain.Services.Multibarbero
 {

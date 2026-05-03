@@ -11,7 +11,7 @@ namespace API.Application.Dtos.Nomencladores.Grupo
         public required TipoDeGrupo TipoDeGrupo { get; set; }
 
         public required decimal Desgaste { get; set; }
- 
+
         public Guid OrigenId { get; set; }
 
         public bool Reservado { get; set; }

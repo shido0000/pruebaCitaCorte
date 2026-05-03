@@ -1,9 +1,6 @@
 using API.Application.Contracts.Multibarbero;
 using API.Application.Dtos.Multibarbero.Suscripciones;
-using API.Data.Entidades.Multibarbero;
 using API.Data.Enum.Multibarbero;
-using API.Domain.Interfaces.Repositories.Multibarbero;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Application.Services.Multibarbero
 {
@@ -50,8 +47,8 @@ namespace API.Application.Services.Multibarbero
                     FechaVencimiento = barbero.FechaVencimientoPlan,
                     Estado = barbero.EstadoSolicitudCambioPlan ?? EstadoSuscripcion.Activa,
                     Caracteristicas = plan.CaracteristicasJson,
-                    DiasRestantes = barbero.FechaVencimientoPlan.HasValue 
-                        ? (barbero.FechaVencimientoPlan.Value - DateTime.UtcNow).Days 
+                    DiasRestantes = barbero.FechaVencimientoPlan.HasValue
+                        ? (barbero.FechaVencimientoPlan.Value - DateTime.UtcNow).Days
                         : 0
                 };
             }
@@ -77,8 +74,8 @@ namespace API.Application.Services.Multibarbero
                     FechaVencimiento = barberia.FechaVencimientoPlan,
                     Estado = barberia.EstadoSolicitudCambioPlan ?? EstadoSuscripcion.Activa,
                     Caracteristicas = plan.CaracteristicasJson,
-                    DiasRestantes = barberia.FechaVencimientoPlan.HasValue 
-                        ? (barberia.FechaVencimientoPlan.Value - DateTime.UtcNow).Days 
+                    DiasRestantes = barberia.FechaVencimientoPlan.HasValue
+                        ? (barberia.FechaVencimientoPlan.Value - DateTime.UtcNow).Days
                         : 0
                 };
             }
@@ -103,13 +100,13 @@ namespace API.Application.Services.Multibarbero
                 if (barbero == null)
                     throw new Exception("Barbero no encontrado");
 
-                if (barbero.EstadoSolicitudCambioPlan.HasValue && 
+                if (barbero.EstadoSolicitudCambioPlan.HasValue &&
                     barbero.EstadoSolicitudCambioPlan.Value == EstadoSuscripcion.PendienteCambio)
                     throw new Exception("Ya existe una solicitud de cambio de plan pendiente");
 
                 barbero.NuevoPlanSolicitadoId = input.NuevoPlanId;
                 barbero.EstadoSolicitudCambioPlan = EstadoSuscripcion.PendienteCambio;
-                
+
                 await _barberoRepository.ActualizarAsync(barbero);
             }
             else
@@ -118,13 +115,13 @@ namespace API.Application.Services.Multibarbero
                 if (barberia == null)
                     throw new Exception("Barbería no encontrada");
 
-                if (barberia.EstadoSolicitudCambioPlan.HasValue && 
+                if (barberia.EstadoSolicitudCambioPlan.HasValue &&
                     barberia.EstadoSolicitudCambioPlan.Value == EstadoSuscripcion.PendienteCambio)
                     throw new Exception("Ya existe una solicitud de cambio de plan pendiente");
 
                 barberia.NuevoPlanSolicitadoId = input.NuevoPlanId;
                 barberia.EstadoSolicitudCambioPlan = EstadoSuscripcion.PendienteCambio;
-                
+
                 await _barberiaRepository.ActualizarAsync(barberia);
             }
         }
@@ -137,7 +134,7 @@ namespace API.Application.Services.Multibarbero
                 if (barbero == null)
                     throw new Exception("Barbero no encontrado");
 
-                if (!barbero.EstadoSolicitudCambioPlan.HasValue || 
+                if (!barbero.EstadoSolicitudCambioPlan.HasValue ||
                     barbero.EstadoSolicitudCambioPlan.Value != EstadoSuscripcion.PendienteCambio)
                     throw new Exception("No hay una solicitud de cambio de plan pendiente");
 
@@ -163,7 +160,7 @@ namespace API.Application.Services.Multibarbero
                 if (barberia == null)
                     throw new Exception("Barbería no encontrada");
 
-                if (!barberia.EstadoSolicitudCambioPlan.HasValue || 
+                if (!barberia.EstadoSolicitudCambioPlan.HasValue ||
                     barberia.EstadoSolicitudCambioPlan.Value != EstadoSuscripcion.PendienteCambio)
                     throw new Exception("No hay una solicitud de cambio de plan pendiente");
 
@@ -237,15 +234,15 @@ namespace API.Application.Services.Multibarbero
             if (tipoProveedor == TipoProveedor.Barbero)
             {
                 var barbero = await _barberoRepository.ObtenerPorIdAsync(perfilId);
-                return barbero != null && 
-                       barbero.PlanSuscripcionId.HasValue && 
+                return barbero != null &&
+                       barbero.PlanSuscripcionId.HasValue &&
                        (!barbero.FechaVencimientoPlan.HasValue || barbero.FechaVencimientoPlan > DateTime.UtcNow);
             }
             else
             {
                 var barberia = await _barberiaRepository.ObtenerPorIdAsync(perfilId);
-                return barberia != null && 
-                       barberia.PlanSuscripcionId.HasValue && 
+                return barberia != null &&
+                       barberia.PlanSuscripcionId.HasValue &&
                        (!barberia.FechaVencimientoPlan.HasValue || barberia.FechaVencimientoPlan > DateTime.UtcNow);
             }
         }
@@ -273,10 +270,10 @@ namespace API.Application.Services.Multibarbero
         public async Task<object> ObtenerReporteSuscripcionesPorVencerAsync(int dias = 7)
         {
             var fechaLimite = DateTime.UtcNow.AddDays(dias);
-            
+
             // Obtener barberías por vencer
             var barberiasPorVencer = await _barberiaRepository.ObtenerPorVencimientoAsync(fechaLimite);
-            
+
             // Obtener barberos por vencer
             var barberosPorVencer = await _barberoRepository.ObtenerPorVencimientoAsync(fechaLimite);
 
@@ -309,7 +306,7 @@ namespace API.Application.Services.Multibarbero
             {
                 TotalBarberiasActivas = barberiasActivas.Count(),
                 TotalBarberosActivos = barberosActivos.Count(),
-                IngresosMensualesEstimados = barberiasActivas.Sum(b => b.PlanSuscripcion?.Precio ?? 0) + 
+                IngresosMensualesEstimados = barberiasActivas.Sum(b => b.PlanSuscripcion?.Precio ?? 0) +
                                             barberosActivos.Sum(b => b.PlanSuscripcion?.Precio ?? 0)
             };
         }

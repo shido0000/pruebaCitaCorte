@@ -18,18 +18,18 @@ namespace API.Application.Dtos.Multibarbero.PerfilBarberia
         public string? Logo { get; set; }
         public decimal? Latitud { get; set; }
         public decimal? Longitud { get; set; }
-        
+
         public decimal CalificacionPromedio { get; set; }
         public int TotalReseñas { get; set; }
-        
+
         public string? PlanSuscripcionNombre { get; set; }
         public DateTime? FechaVencimientoPlan { get; set; }
-        
+
         public int TotalBarberosAfiliados { get; set; }
         public int MaxBarberosPermitidos { get; set; }
-        
+
         public bool TieneCupoDisponible => MaxBarberosPermitidos > TotalBarberosAfiliados;
-        
+
         public DateTime FechaCreacion { get; set; }
     }
 }

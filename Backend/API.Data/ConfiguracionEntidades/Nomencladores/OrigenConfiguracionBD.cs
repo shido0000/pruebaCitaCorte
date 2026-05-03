@@ -1,5 +1,4 @@
 ﻿using API.Data.Entidades.Nomencladores;
-using API.Data.Entidades.Seguridad;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data.ConfiguracionEntidades.Nomencladores
@@ -19,7 +18,7 @@ namespace API.Data.ConfiguracionEntidades.Nomencladores
             modelBuilder.Entity<Origen>().Property(e => e.CategoriaId).IsRequired();
 
 
-            modelBuilder.Entity<Origen>().HasIndex(e => new { e.Codigo, e.CategoriaId}).IsUnique();
+            modelBuilder.Entity<Origen>().HasIndex(e => new { e.Codigo, e.CategoriaId }).IsUnique();
 
             modelBuilder.Entity<Origen>().HasOne(e => e.Categoria).WithMany(e => e.Origenes).HasForeignKey(e => e.CategoriaId).OnDelete(DeleteBehavior.Restrict);
             //   modelBuilder.Entity<Usuario>().HasOne(e => e.Rol).WithMany(e => e.Usuarios).HasForeignKey(e => e.RolId).OnDelete(DeleteBehavior.Restrict);

@@ -1,8 +1,7 @@
 using API.Application.Contracts.Multibarbero;
-using API.Application.Dtos.Multibarbero;
-using API.Domain.Entities.Multibarbero;
-using API.Domain.Interfaces.Repositories.Multibarbero;
-using Microsoft.Extensions.Logging;
+using API.Application.Dtos.Multibarbero.PerfilBarberia;
+using API.Data.Entidades.Multibarbero;
+using API.Data.IUnitOfWorks.Interfaces.Multibarbero;
 
 namespace API.Application.Services.Multibarbero;
 
@@ -86,7 +85,7 @@ public class PerfilBarberiaService : ServiceBase, IPerfilBarberiaService
             };
 
             var entidadCreada = await _perfilBarberiaRepository.CrearAsync(entidad);
-            
+
             return new CrearPerfilBarberiaOutputDto
             {
                 Id = entidadCreada.Id,

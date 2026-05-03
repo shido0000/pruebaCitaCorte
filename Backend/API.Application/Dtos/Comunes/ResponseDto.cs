@@ -5,5 +5,6 @@
         public int Status { get; internal set; }
         public object? Result { get; set; }
         public string? ErrorMessage { get; set; }
+        public string? Message { get; set; }
     }
 }

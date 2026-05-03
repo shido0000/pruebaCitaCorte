@@ -1,8 +1,6 @@
 using API.Application.Contracts.Multibarbero;
 using API.Application.Dtos.Multibarbero.Estadisticas;
-using API.Data.Entidades.Multibarbero;
-using API.Domain.Interfaces.Repositories.Multibarbero;
-using Microsoft.EntityFrameworkCore;
+using API.Data.IUnitOfWorks.Interfaces.Multibarbero;
 
 namespace API.Application.Services.Multibarbero
 {
@@ -34,7 +32,7 @@ namespace API.Application.Services.Multibarbero
             var totalReservas = reservas.Count();
             var reservasCompletadas = reservas.Count(r => r.Estado == Data.Enum.Multibarbero.EstadoReserva.Completada);
             var reservasCanceladas = reservas.Count(r => r.Estado == Data.Enum.Multibarbero.EstadoReserva.Cancelada);
-            
+
             var ingresosTotales = reservas
                 .Where(r => r.Estado == Data.Enum.Multibarbero.EstadoReserva.Completada)
                 .Sum(r => r.PrecioTotal ?? 0);
@@ -55,7 +53,7 @@ namespace API.Application.Services.Multibarbero
         public async Task<List<EstadisticaBarberoDto>> ObtenerEstadisticasBarberos(EstadisticaFiltroDto filtro)
         {
             var reservas = await _reservaRepository.ObtenerPorFiltrosAsync(filtro);
-            
+
             return reservas
                 .GroupBy(r => r.IdBarbero)
                 .Select(g => new EstadisticaBarberoDto
@@ -73,7 +71,7 @@ namespace API.Application.Services.Multibarbero
         public async Task<List<EstadisticaBarberiaDto>> ObtenerEstadisticasBarberias(EstadisticaFiltroDto filtro)
         {
             var reservas = await _reservaRepository.ObtenerPorFiltrosAsync(filtro);
-            
+
             return reservas
                 .GroupBy(r => r.IdBarberia)
                 .Select(g => new EstadisticaBarberiaDto
@@ -97,7 +95,7 @@ namespace API.Application.Services.Multibarbero
         {
             // Implementación básica - se puede expandir con datos reales de ventas
             var productos = await _productoRepository.ObtenerTodosAsync();
-            
+
             return productos.Select(p => new EstadisticaProductoDto
             {
                 ProductoId = p.Id,

@@ -1,8 +1,10 @@
+using API.Application.Dtos.Comunes;
 using API.Application.Dtos.Multibarbero.Reserva;
 using API.Data.Entidades.Multibarbero;
 using API.Domain.Interfaces.Multibarbero;
 using API.Domain.Validators.Multibarbero;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq.Expressions;
 
 namespace API.Application.Controllers.Multibarbero
@@ -19,7 +21,7 @@ namespace API.Application.Controllers.Multibarbero
         protected override Task<(IEnumerable<Reserva>, int)> AplicarFiltrosIncluirPropiedades(FiltrarConfigurarListadoPaginadoReservaInputDto inputDto)
         {
             List<Expression<Func<Reserva, bool>>> filtros = new();
-            
+
             if (!string.IsNullOrEmpty(inputDto.TextoBuscar))
             {
                 filtros.Add(r => r.Notas.Contains(inputDto.TextoBuscar));
@@ -32,7 +34,7 @@ namespace API.Application.Controllers.Multibarbero
         public async Task<IActionResult> ObtenerReservasPorCliente(Guid clienteId)
         {
             _servicioBase.ValidarPermisos("listar, gestionar");
-            
+
             var reservas = await _reservaService.ObtenerReservasPorCliente(clienteId);
             var reservasDto = _mapper.Map<IEnumerable<DetallesReservaDto>>(reservas);
 
@@ -43,7 +45,7 @@ namespace API.Application.Controllers.Multibarbero
         public async Task<IActionResult> ObtenerReservasPorProveedor(Guid proveedorId, [FromQuery] API.Data.Enum.Multibarbero.TipoProveedor tipoProveedor)
         {
             _servicioBase.ValidarPermisos("listar, gestionar");
-            
+
             var reservas = await _reservaService.ObtenerReservasPorProveedor(proveedorId, tipoProveedor);
             var reservasDto = _mapper.Map<IEnumerable<DetallesReservaDto>>(reservas);
 
@@ -54,7 +56,7 @@ namespace API.Application.Controllers.Multibarbero
         public async Task<IActionResult> ObtenerReservasPorFecha(DateTime fecha, [FromQuery] Guid? proveedorId = null, [FromQuery] API.Data.Enum.Multibarbero.TipoProveedor? tipoProveedor = null)
         {
             _servicioBase.ValidarPermisos("listar, gestionar");
-            
+
             var reservas = await _reservaService.ObtenerReservasPorFecha(fecha, proveedorId, tipoProveedor);
             var reservasDto = _mapper.Map<IEnumerable<DetallesReservaDto>>(reservas);
 
@@ -65,7 +67,7 @@ namespace API.Application.Controllers.Multibarbero
         public async Task<IActionResult> ConfirmarReserva(Guid reservaId)
         {
             _servicioBase.ValidarPermisos("gestionar");
-            
+
             var reserva = await _reservaService.ConfirmarReserva(reservaId);
             var reservaDto = _mapper.Map<DetallesReservaDto>(reserva);
 
@@ -76,7 +78,7 @@ namespace API.Application.Controllers.Multibarbero
         public async Task<IActionResult> CancelarReserva(Guid reservaId, [FromBody] string motivo)
         {
             _servicioBase.ValidarPermisos("gestionar");
-            
+
             var reserva = await _reservaService.CancelarReserva(reservaId, motivo);
             var reservaDto = _mapper.Map<DetallesReservaDto>(reserva);
 
@@ -87,7 +89,7 @@ namespace API.Application.Controllers.Multibarbero
         public async Task<IActionResult> RechazarReserva(Guid reservaId, [FromBody] string motivo)
         {
             _servicioBase.ValidarPermisos("gestionar");
-            
+
             var reserva = await _reservaService.RechazarReserva(reservaId, motivo);
             var reservaDto = _mapper.Map<DetallesReservaDto>(reserva);
 

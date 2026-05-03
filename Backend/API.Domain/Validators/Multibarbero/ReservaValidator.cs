@@ -1,6 +1,5 @@
 using API.Data.Entidades.Multibarbero;
 using API.Data.IUnitOfWorks.Interfaces;
-using API.Application.Contracts.Multibarbero;
 using FluentValidation;
 
 namespace API.Domain.Validators.Multibarbero
@@ -51,16 +50,16 @@ namespace API.Domain.Validators.Multibarbero
             if (reserva.Id == Guid.Empty)
             {
                 return !await _validacionService.ExisteSolapamientoAsync(
-                    reserva.ProveedorId, 
-                    reserva.FechaHoraInicio, 
+                    reserva.ProveedorId,
+                    reserva.FechaHoraInicio,
                     reserva.FechaHoraFin);
             }
-            
+
             // Para actualizaciones, excluir la propia reserva de la validación
             return !await _validacionService.ExisteSolapamientoAsync(
-                reserva.ProveedorId, 
-                reserva.FechaHoraInicio, 
-                reserva.FechaHoraFin, 
+                reserva.ProveedorId,
+                reserva.FechaHoraInicio,
+                reserva.FechaHoraFin,
                 reserva.Id);
         }
     }

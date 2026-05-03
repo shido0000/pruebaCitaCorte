@@ -1,5 +1,5 @@
-using Hangfire;
 using API.Domain.Interfaces.Multibarbero;
+using Hangfire;
 using Microsoft.Extensions.Logging;
 
 namespace API.Domain.Jobs;
@@ -31,11 +31,11 @@ public class VerificarSuscripcionesPorVencerJob
     public async Task Ejecutar()
     {
         _logger.LogInformation("Iniciando job: VerificarSuscripcionesPorVencer");
-        
+
         try
         {
             var fechaVencimiento = DateTime.UtcNow.AddDays(7);
-            
+
             // Verificar barberos
             var barberosPorVencer = await _perfilBarberoService.ObtenerPorFechaVencimiento(fechaVencimiento);
             foreach (var barbero in barberosPorVencer)
@@ -50,7 +50,7 @@ public class VerificarSuscripcionesPorVencerJob
                 );
                 _logger.LogInformation($"Notificación de suscripción por vencer enviada al barbero {barbero.UsuarioId}");
             }
-            
+
             // Verificar barberías
             var barberiasPorVencer = await _perfilBarberiaService.ObtenerPorFechaVencimiento(fechaVencimiento);
             foreach (var barberia in barberiasPorVencer)
@@ -65,7 +65,7 @@ public class VerificarSuscripcionesPorVencerJob
                 );
                 _logger.LogInformation($"Notificación de suscripción por vencer enviada a la barbería {barberia.UsuarioId}");
             }
-            
+
             _logger.LogInformation($"Job completado. Notificaciones enviadas: {barberosPorVencer.Count + barberiasPorVencer.Count}");
         }
         catch (Exception ex)

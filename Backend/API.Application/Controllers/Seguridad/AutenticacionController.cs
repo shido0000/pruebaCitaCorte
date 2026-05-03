@@ -1,10 +1,7 @@
 ﻿using API.Application.Dtos.Comunes;
 using API.Application.Dtos.Seguridad.Autenticacion;
 using API.Application.Filters;
-using API.Data.Entidades.Seguridad;
-using API.Domain.Interfaces;
 using API.Domain.Interfaces.Seguridad;
-using API.Domain.Validators.Seguridad;
 using AutoMapper;
 using Hangfire;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

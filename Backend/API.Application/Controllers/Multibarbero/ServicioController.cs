@@ -2,7 +2,6 @@ using API.Application.Dtos.Multibarbero;
 using API.Application.Services.Multibarbero;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
 
 namespace API.Application.Controllers.Multibarbero;
 

@@ -1,5 +1,4 @@
-﻿using API.Application.Dtos.Nomencladores.Familia;
-using API.Application.Dtos.Nomencladores.Origen;
+﻿using API.Application.Dtos.Nomencladores.Origen;
 using API.Data.Entidades.Nomencladores;
 
 namespace API.Application.Mapper.Nomencladores

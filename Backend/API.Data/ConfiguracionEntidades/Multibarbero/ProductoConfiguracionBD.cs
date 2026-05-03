@@ -1,6 +1,5 @@
 using API.Data.Entidades.Multibarbero;
 using Microsoft.EntityFrameworkCore;
-using API.Data.ConfiguracionEntidades;
 
 namespace API.Data.ConfiguracionEntidades.Multibarbero
 {
@@ -33,7 +32,7 @@ namespace API.Data.ConfiguracionEntidades.Multibarbero
             // Índice para búsquedas de productos por barbero
             modelBuilder.Entity<Producto>()
                 .HasIndex(e => e.PerfilBarberoId);
-            
+
             // Índice para búsquedas de productos activos
             modelBuilder.Entity<Producto>()
                 .HasIndex(e => new { e.PerfilBarberoId, e.Activo });

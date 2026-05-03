@@ -1,11 +1,11 @@
-using API.Data.Context;
-using API.Data.Repositories.Base;
+using API.Data.DbContexts;
 using API.Data.Entidades.Multibarbero;
 using API.Data.IUnitOfWorks.Interfaces.Multibarbero;
+using API.Data.IUnitOfWorks.Repositorios;
 
 namespace API.Data.Repositories.Multibarbero;
 
-public class EstadisticaProductoRepository : RepositoryBase<EstadisticaProducto>, IEstadisticaProductoRepository
+public class EstadisticaProductoRepository : BaseRepository<EstadisticaProducto>, IEstadisticaProductoRepository
 {
     public EstadisticaProductoRepository(ApiDbContext context) : base(context)
     {

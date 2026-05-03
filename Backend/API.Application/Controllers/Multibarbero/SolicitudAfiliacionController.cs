@@ -1,8 +1,13 @@
+using API.Application.Dtos.Comunes;
 using API.Application.Dtos.Multibarbero.Afiliacion;
+using API.Application.Dtos.Multibarbero.PlanSuscripcion;
+using API.Application.Dtos.Multibarbero.Reserva;
 using API.Data.Entidades.Multibarbero;
+using API.Domain.Exceptions;
 using API.Domain.Interfaces.Multibarbero;
 using API.Domain.Validators.Multibarbero;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq.Expressions;
 
 namespace API.Application.Controllers.Multibarbero
@@ -19,7 +24,7 @@ namespace API.Application.Controllers.Multibarbero
         protected override Task<(IEnumerable<SolicitudAfiliacion>, int)> AplicarFiltrosIncluirPropiedades(FiltrarConfigurarListadoPaginadoPlanSuscripcionInputDto inputDto)
         {
             List<Expression<Func<SolicitudAfiliacion, bool>>> filtros = new();
-            
+
             if (!string.IsNullOrEmpty(inputDto.TextoBuscar))
             {
                 filtros.Add(s => s.Motivo.Contains(inputDto.TextoBuscar));
@@ -32,7 +37,7 @@ namespace API.Application.Controllers.Multibarbero
         public async Task<IActionResult> ObtenerSolicitudesPorBarbero(Guid barberoId)
         {
             _servicioBase.ValidarPermisos("listar, gestionar");
-            
+
             var solicitudes = await _solicitudAfiliacionService.ObtenerSolicitudesPorBarbero(barberoId);
             var solicitudesDto = _mapper.Map<IEnumerable<DetallesSolicitudAfiliacionDto>>(solicitudes);
 
@@ -43,7 +48,7 @@ namespace API.Application.Controllers.Multibarbero
         public async Task<IActionResult> ObtenerSolicitudesPorBarberia(Guid barberiaId)
         {
             _servicioBase.ValidarPermisos("listar, gestionar");
-            
+
             var solicitudes = await _solicitudAfiliacionService.ObtenerSolicitudesPorBarberia(barberiaId);
             var solicitudesDto = _mapper.Map<IEnumerable<DetallesSolicitudAfiliacionDto>>(solicitudes);
 
@@ -54,7 +59,7 @@ namespace API.Application.Controllers.Multibarbero
         public async Task<IActionResult> AprobarSolicitud(Guid solicitudId)
         {
             _servicioBase.ValidarPermisos("gestionar");
-            
+
             var usuarioId = Guid.Parse(User?.FindSystemResourceClaim("sub")?.Value ?? throw new CustomException { Status = StatusCodes.Status401Unauthorized, Message = "Usuario no identificado." });
             var solicitud = await _solicitudAfiliacionService.AprobarSolicitud(solicitudId, usuarioId);
             var solicitudDto = _mapper.Map<DetallesSolicitudAfiliacionDto>(solicitud);
@@ -66,7 +71,7 @@ namespace API.Application.Controllers.Multibarbero
         public async Task<IActionResult> RechazarSolicitud(Guid solicitudId, [FromBody] string motivo)
         {
             _servicioBase.ValidarPermisos("gestionar");
-            
+
             var usuarioId = Guid.Parse(User?.FindSystemResourceClaim("sub")?.Value ?? throw new CustomException { Status = StatusCodes.Status401Unauthorized, Message = "Usuario no identificado." });
             var solicitud = await _solicitudAfiliacionService.RechazarSolicitud(solicitudId, motivo, usuarioId);
             var solicitudDto = _mapper.Map<DetallesSolicitudAfiliacionDto>(solicitud);

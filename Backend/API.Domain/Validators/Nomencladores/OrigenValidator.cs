@@ -29,7 +29,7 @@ namespace API.Domain.Validators.Nomencladores
 
             RuleFor(m => m.Tipo).NotEmpty().WithMessage("No puede ser un texto vacio.")
                                 .NotNull().WithMessage("Es un campo obligatorio.");
-                                  
+
 
 
             RuleFor(m => m).MustAsync(async (origen, cancelacion) => await _repositorios.Origenes.AnyAsync(e => e.Id != origen.Id && e.Codigo == origen.Codigo))

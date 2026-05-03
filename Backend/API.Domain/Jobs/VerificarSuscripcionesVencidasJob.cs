@@ -1,5 +1,5 @@
-using Hangfire;
 using API.Domain.Interfaces.Multibarbero;
+using Hangfire;
 using Microsoft.Extensions.Logging;
 
 namespace API.Domain.Jobs;
@@ -31,18 +31,18 @@ public class VerificarSuscripcionesVencidasJob
     public async Task Ejecutar()
     {
         _logger.LogInformation("Iniciando job: VerificarSuscripcionesVencidas");
-        
+
         try
         {
             var fechaActual = DateTime.UtcNow;
-            
+
             // Verificar barberos vencidos
             var barberosVencidos = await _perfilBarberoService.ObtenerVencidos(fechaActual);
             foreach (var barbero in barberosVencidos)
             {
                 // Downgrade a Free
                 await _perfilBarberoService.AplicarDowngradeAFree(barbero.Id);
-                
+
                 await _notificacionService.CrearNotificacion(
                     barbero.UsuarioId,
                     Data.Enum.Multibarbero.TipoNotificacion.SuscripcionVencida,
@@ -53,14 +53,14 @@ public class VerificarSuscripcionesVencidasJob
                 );
                 _logger.LogInformation($"Suscripción vencida aplicada al barbero {barbero.UsuarioId}, downgrade a Free realizado");
             }
-            
+
             // Verificar barberías vencidas
             var barberiasVencidas = await _perfilBarberiaService.ObtenerVencidos(fechaActual);
             foreach (var barberia in barberiasVencidas)
             {
                 // Desactivar barbería
                 await _perfilBarberiaService.DesactivarPorVencimiento(barberia.Id);
-                
+
                 await _notificacionService.CrearNotificacion(
                     barberia.UsuarioId,
                     Data.Enum.Multibarbero.TipoNotificacion.SuscripcionVencida,
@@ -71,7 +71,7 @@ public class VerificarSuscripcionesVencidasJob
                 );
                 _logger.LogInformation($"Suscripción vencida aplicada a la barbería {barberia.UsuarioId}, desactivación realizada");
             }
-            
+
             _logger.LogInformation($"Job completado. Suscripciones vencidas procesadas: {barberosVencidos.Count + barberiasVencidas.Count}");
         }
         catch (Exception ex)

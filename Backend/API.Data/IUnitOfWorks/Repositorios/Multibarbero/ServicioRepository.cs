@@ -1,16 +1,11 @@
-using API.Data.Context;
-using API.Data.Repositories.Base;
-using API.Domain.Entities.Multibarbero;
-using API.Domain.Interfaces.Repositories.Multibarbero;
+using API.Data.DbContexts;
+using API.Data.Entidades.Multibarbero;
+using API.Data.IUnitOfWorks.Interfaces.Multibarbero;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace API.Data.IUnitOfWorks.Repositorios.Multibarbero;
 
-public class ServicioRepository : RepositoryBase<Servicio>, IServicioRepository
+public class ServicioRepository : BaseRepository<Servicio>, IServicioRepository
 {
     public ServicioRepository(ApiDbContext context) : base(context) { }
 
@@ -39,10 +34,10 @@ public class ServicioRepository : RepositoryBase<Servicio>, IServicioRepository
     public async Task<bool> ExisteNombreEnBarberiaAsync(string nombre, Guid barberiaId, Guid? idExcluir = null)
     {
         var query = _dbSet.Where(s => s.Nombre == nombre && s.IdBarberia == barberiaId && s.Estado);
-        
+
         if (idExcluir.HasValue)
             query = query.Where(s => s.Id != idExcluir.Value);
-        
+
         return await query.AnyAsync();
     }
 }

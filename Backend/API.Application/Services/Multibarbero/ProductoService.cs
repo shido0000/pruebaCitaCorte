@@ -47,7 +47,7 @@ namespace API.Application.Services.Multibarbero
 
         public async Task<ProductoListadoPaginadoDto> ListarPaginadoAsync(ProductoFiltroDto filtro)
         {
-            var query = _productoRepository.Queryable;
+            var query = _productoRepository.GetQuery();
 
             // Aplicar filtros
             if (!string.IsNullOrWhiteSpace(filtro.Nombre))

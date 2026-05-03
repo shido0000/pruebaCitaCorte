@@ -1,6 +1,5 @@
 using API.Data.Entidades.Multibarbero;
 using Microsoft.EntityFrameworkCore;
-using API.Data.ConfiguracionEntidades;
 
 namespace API.Data.ConfiguracionEntidades.Multibarbero
 {
@@ -27,7 +26,7 @@ namespace API.Data.ConfiguracionEntidades.Multibarbero
             // Índice para búsquedas de notificaciones no leídas por usuario
             modelBuilder.Entity<Notificacion>()
                 .HasIndex(e => new { e.UsuarioDestinoId, e.Leida });
-            
+
             // Índice para notificaciones con acción requerida
             modelBuilder.Entity<Notificacion>()
                 .HasIndex(e => new { e.UsuarioDestinoId, e.AccionRequerida });

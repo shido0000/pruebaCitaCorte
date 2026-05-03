@@ -1,6 +1,4 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using API.Data.Entidades;
-using API.Data.Entidades.Multibarbero;
 
 namespace API.Data.Entidades.Multibarbero
 {
@@ -19,12 +17,12 @@ namespace API.Data.Entidades.Multibarbero
         /// Número máximo de barberos que pueden afiliarse a una barbería con este plan
         /// </summary>
         public int MaxBarberosAfiliados { get; set; }
-        
+
         /// <summary>
         /// Número máximo de reservas que se pueden manejar mensualmente
         /// </summary>
         public int MaxReservasMensuales { get; set; }
-        
+
         /// <summary>
         /// Número máximo de productos que se pueden tener en venta
         /// </summary>
@@ -35,12 +33,12 @@ namespace API.Data.Entidades.Multibarbero
         /// Indica si el plan permite acceso a estadísticas
         /// </summary>
         public bool PermiteEstadisticas { get; set; }
-        
+
         /// <summary>
         /// Indica si el plan permite recibir reservas
         /// </summary>
         public bool PermiteReservas { get; set; }
-        
+
         /// <summary>
         /// Indica si el plan permite vender productos
         /// </summary>

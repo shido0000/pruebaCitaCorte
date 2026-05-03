@@ -5,16 +5,16 @@ namespace API.Application.Dtos.Multibarbero.PerfilBarberia
         // Información adicional para detalles
         public string? NombreUsuarioPropietario { get; set; }
         public string? EmailUsuarioPropietario { get; set; }
-        
+
         // Lista de barberos afiliados (resumida)
         public List<BarberoAfiliadoResumenDto> BarberosAfiliados { get; set; } = new();
-        
+
         // Servicios ofrecidos
         public List<ServicioResumenDto> Servicios { get; set; } = new();
-        
+
         // Historial de planes
         public string? HistorialPlanesJson { get; set; }
-        
+
         // Configuración avanzada
         public bool AceptaSolicitudesAfiliacion { get; set; }
         public bool NotificacionesActivas { get; set; }
