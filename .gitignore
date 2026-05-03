@@ -1,16 +1,14 @@
 ```
 # Compiled and build artifacts
-*.dll
-*.exe
-*.pdb
-*.so
-*.dylib
-*.class
-*.o
-*.obj
-*.out
 *.pyc
 __pycache__/
+*.o
+*.obj
+*.dll
+*.so
+*.exe
+*.class
+*.out
 
 # Dependencies
 node_modules/
@@ -18,17 +16,14 @@ venv/
 .venv/
 .env
 .env.local
-.env.*
+*.env.*
 
-# Build outputs
+# Build directories
+dist/
+build/
+target/
 bin/
 obj/
-Debug/
-Release/
-build/
-dist/
-target/
-.gradle/
 
 # Logs and temp files
 *.log
@@ -39,18 +34,47 @@ target/
 # Editors
 .vscode/
 .idea/
-*.userprefs
+*.swp
+*.swo
 
-# OS generated files
+# System files
 .DS_Store
 Thumbs.db
 
-# Coverage reports
+# Coverage
 coverage/
 htmlcov/
 .coverage
 
-# Local configuration
-local.settings.json
-appsettings.Development.json
+# Python specific
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Dotnet specific
+**/bin/
+**/obj/
+**/Debug/
+**/Release/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+**/.DS_Store
 ```
